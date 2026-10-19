@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "project",
+  "record": {
+    "id": "ptt-sentiment-stock-analysis",
+    "visibility": "public",
+    "name": "Market Sentiment x TAIEX",
+    "summary": "Three-person NTNU event study of PTT Stock sentiment and the TAIEX. Fine-tuned multilingual BERT and evaluated sentiment structure around the April 2025 tariff shock.",
+    "contribution": "Roy handled BERT training, coding, crawling, and statistical analysis in a three-person NTNU research team, as described in the existing public portfolio.",
+    "technologies": [
+      "Python",
+      "PyTorch",
+      "Hugging Face Transformers",
+      "BERT",
+      "SQLite"
+    ],
+    "status": "research-completed",
+    "period": "2025",
+    "repository": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis",
+    "demo": null,
+    "results": [
+      "Implemented a text ingestion, labeling, model training, and event-study workflow."
+    ],
+    "limitations": [
+      "The reported 0.683 macro-F1 used a test set overlapping training and tuning. The repository reports 0.580 on a 45-item consensus-labeled holdout.",
+      "This is a single-event, same-day association study; it does not establish market prediction."
+    ],
+    "lessons": [
+      "Separate exploratory scores from held-out evaluation and publish corrections when recomputation changes the conclusion."
+    ],
+    "evidence": [
+      "ptt-readme",
+      "ptt-errata",
+      "portfolio-existing",
+      "scan-ptt-sentiment-stock-analysis-731cfbb08942"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 2,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-ptt-sentiment-stock-analysis-731cfbb08942",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/tree/731cfbb089427efbf47026e3235be029d3c46fb6",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "731cfbb089427efbf47026e3235be029d3c46fb6"
+    }
+  ],
+  "discovery": {
+    "commit": "731cfbb089427efbf47026e3235be029d3c46fb6",
+    "readmeHash": "c3b417e5849ffcd78ae3485f5abe456cec681b96f177e68c00c1273199ca9623",
+    "aiUsed": false,
+    "notes": "Repository text is untrusted evidence. Review changes and attribution before merging."
+  }
+}

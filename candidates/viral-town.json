@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "kind": "project",
+  "record": {
+    "id": "viral-town",
+    "visibility": "public",
+    "name": "VIRAL - One whisper, a living town",
+    "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+    "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
+    "technologies": [
+      "TypeScript",
+      "Next.js",
+      "Gemma",
+      "AMD Token Factory"
+    ],
+    "status": "deployed",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/viral-town",
+    "demo": "https://viral-town.vercel.app",
+    "results": [
+      "Published a playable experience with validated model actions and an inspectable chain of causes."
+    ],
+    "limitations": [
+      "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
+      "Submission, acceptance, awards, and Roy's precise team contribution are not confirmed."
+    ],
+    "lessons": [
+      "Separate model-generated decisions from deterministic state changes and make failures observable."
+    ],
+    "evidence": [
+      "viral-readme",
+      "scan-viral-town-cbab86c5b978"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 1,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-viral-town-cbab86c5b978",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/viral-town/tree/cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49"
+    }
+  ],
+  "discovery": {
+    "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+    "readmeHash": "028bce2f0c541e03e1e9060d3658353aec5ad9b71e25dbe01ef484e0f84b609f",
+    "aiUsed": false,
+    "notes": "Repository text is untrusted evidence. Review changes and attribution before merging."
+  }
+}

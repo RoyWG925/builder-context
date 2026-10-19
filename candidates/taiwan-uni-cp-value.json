@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "kind": "project",
+  "record": {
+    "id": "taiwan-uni-cp-value",
+    "visibility": "public",
+    "name": "Is my major worth it?",
+    "summary": "Interactive dashboard comparing Taiwan university admission scores with graduate salaries across 1,787 programs, with field-level salary distributions and methodology notes.",
+    "contribution": "NTNU course project authored by Roy Wang, as credited in the public README.",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "Plotly",
+      "pandas"
+    ],
+    "status": "prototype",
+    "period": "2025",
+    "repository": "https://github.com/RoyWG925/taiwan-uni-cp-value",
+    "demo": null,
+    "results": [
+      "Joined admission and field-level salary data and built an interactive exploration interface."
+    ],
+    "limitations": [
+      "Salary data are at field level, not individual program outcomes. No public server demo is documented."
+    ],
+    "lessons": [
+      "Make data grain and proxy assumptions visible alongside comparisons."
+    ],
+    "evidence": [
+      "university-readme",
+      "scan-taiwan-uni-cp-value-5881b1df4347"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 3,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-taiwan-uni-cp-value-5881b1df4347",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/taiwan-uni-cp-value/tree/5881b1df4347ecf449ae94f946afc4733a2d3afb",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "5881b1df4347ecf449ae94f946afc4733a2d3afb"
+    }
+  ],
+  "discovery": {
+    "commit": "5881b1df4347ecf449ae94f946afc4733a2d3afb",
+    "readmeHash": "673df6c2e6a3f3afd0674ba96c2f55d422ca3c2e131dc8b7434eb0c7d00319ee",
+    "aiUsed": false,
+    "notes": "Repository text is untrusted evidence. Review changes and attribution before merging."
+  }
+}

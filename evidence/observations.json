@@ -1,1 +1,21 @@
-{"schemaVersion":1,"repositories":{}}
+{
+  "schemaVersion": 1,
+  "repositories": {
+    "nucleus-io": {
+      "commit": "072dae5886fef81107f1dc1e6b31f63b527140bc",
+      "readmeHash": "1c97ec76a0cd1d818d0a3ded434112bbdeeaa073a4209cf28b13f951143b43ca"
+    },
+    "ptt-sentiment-stock-analysis": {
+      "commit": "731cfbb089427efbf47026e3235be029d3c46fb6",
+      "readmeHash": "c3b417e5849ffcd78ae3485f5abe456cec681b96f177e68c00c1273199ca9623"
+    },
+    "taiwan-uni-cp-value": {
+      "commit": "5881b1df4347ecf449ae94f946afc4733a2d3afb",
+      "readmeHash": "673df6c2e6a3f3afd0674ba96c2f55d422ca3c2e131dc8b7434eb0c7d00319ee"
+    },
+    "viral-town": {
+      "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+      "readmeHash": "028bce2f0c541e03e1e9060d3658353aec5ad9b71e25dbe01ef484e0f84b609f"
+    }
+  }
+}
