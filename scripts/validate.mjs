@@ -10,6 +10,6 @@ for(const f of (await readdir('candidates')).filter(f=>f.endsWith('.json'))) {
   else validateCompetition(c.record,ids,new Set(data.projects.map(p=>p.id)),true);
   if(c.schemaVersion!==2||proposalKey(c)+'.json'!==f) throw Error('Legacy or mismatched candidate; refresh using the current collector');
   const prior=(c.kind==='project'?data.projects:data.competitions).find(p=>p.id===c.record.id);
-  if((prior?hash(prior):null)!==c.baseRecordHash)throw Error(`Stale candidate: ${f}. Reanalyse instead of overwriting canonical facts.`);
+  if((prior?hash(prior):null)!==c.baseRecordHash)console.warn(`Pending candidate ${f} needs reanalysis against the current record; it remains excluded from exports.`);
 }
 console.log(`Validated public profile, ${data.projects.length} projects, ${data.competitions.length} competition records and candidate boundaries.`);

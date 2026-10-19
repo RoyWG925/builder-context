@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  pull-requests: write
+  pull-requests: read
 concurrency:
   group: identity-discovery
   cancel-in-progress: false
@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '24'
       - run: npm test && npm run check
-      - name: Collect public evidence and open independent proposals
+      - name: Collect public evidence into the pending queue (no PR required)
         run: npm run scan
         env:
           GH_TOKEN: ${{ github.token }}

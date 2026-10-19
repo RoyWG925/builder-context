@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {load,validate,publicBundle,hash,save} from '../scripts/lib.mjs';
 import {render,generate} from '../scripts/generate.mjs';
 import {eligible,normalize,fingerprint} from '../scripts/evidence.mjs';
-import {propose,proposalKey} from '../scripts/proposals.mjs';
+import {proposePR as propose,proposalKey} from '../scripts/proposals.mjs';
 import {canConfirm,promote} from '../scripts/confirm.mjs';
 import {agentEnvironment,validateAnalysis} from '../scripts/local-agent.mjs';
 const data=await load(),template=await readFile('templates/resume.html','utf8');

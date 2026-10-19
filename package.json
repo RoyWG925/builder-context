@@ -11,6 +11,7 @@
     "check": "node scripts/validate.mjs && node scripts/generate.mjs --check",
     "scan": "node scripts/scan.mjs",
     "confirm": "node scripts/confirm.mjs",
+    "confirm:chat": "node scripts/chat-confirm.mjs",
     "e2e": "node scripts/e2e.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "maintain": "node scripts/local-agent.mjs",

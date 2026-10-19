@@ -3,18 +3,41 @@
   "visibility": "public",
   "name": "VIRAL - One whisper, a living town",
   "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
-  "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
-  "technologies": ["TypeScript", "Next.js", "Gemma", "AMD Token Factory"],
+  "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.",
+  "technologies": [
+    "TypeScript",
+    "Next.js",
+    "Gemma",
+    "AMD Token Factory"
+  ],
   "status": "deployed",
   "period": "2026",
   "repository": "https://github.com/RoyWG925/viral-town",
   "demo": "https://viral-town.vercel.app",
-  "results": ["Published a playable experience with validated model actions and an inspectable chain of causes."],
-  "limitations": ["Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.", "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed."],
-  "lessons": ["Separate model-generated decisions from deterministic state changes and make failures observable."],
-  "evidence": ["viral-readme"],
+  "results": [
+    "Published a playable experience with validated model actions and an inspectable chain of causes."
+  ],
+  "limitations": [
+    "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
+    "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown."
+  ],
+  "lessons": [
+    "Separate model-generated decisions from deterministic state changes and make failures observable."
+  ],
+  "evidence": [
+    "viral-readme",
+    "chat-roy-20261019-chat-attribution"
+  ],
   "lastVerified": "2026-10-19",
   "featured": true,
   "order": 1,
-  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Public repository describes the project; does not attest to individual contribution or competition outcome."}
+  "review": {
+    "state": "owner-attested",
+    "by": "RoyWG925",
+    "date": "2026-10-19",
+    "evidence": [
+      "chat-roy-20261019-chat-attribution"
+    ],
+    "basis": "Chat approval for contribution, limitations. Unchanged fields retain their prior evidence (published-baseline). Receipt SHA256: 0827a9cf6c724093e9913b361e6d5951a9d5ce301ce7a808d30ab26178027f61."
+  }
 }

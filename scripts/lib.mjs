@@ -16,10 +16,10 @@ export async function records(root, dir) {
   return Promise.all((await readdir(join(root, dir))).filter(f => f.endsWith('.json')).sort().map(f => json(join(root, dir, f))));
 }
 export async function load(root = '.') {
-  const [profile, projects, competitions, evidence, personas] = await Promise.all([
-    json(join(root, 'profile/public.json')), records(root, 'projects'), records(root, 'competitions'), json(join(root, 'evidence/sources.json')), json(join(root, 'profile/personas.json')).catch(e=>{if(e.code==='ENOENT')return [];throw e;})
+  const [profile, projects, competitions, evidence, personas, statements] = await Promise.all([
+    json(join(root, 'profile/public.json')), records(root, 'projects'), records(root, 'competitions'), json(join(root, 'evidence/sources.json')), json(join(root, 'profile/personas.json')).catch(e=>{if(e.code==='ENOENT')return [];throw e;}), json(join(root, 'evidence/owner-statements.json')).catch(e=>{if(e.code==='ENOENT')return {statements:[]};throw e;})
   ]);
-  return { schemaVersion: 1, profile, projects, competitions, evidence: evidence.sources, personas };
+  return { schemaVersion: 1, profile, projects, competitions, evidence: evidence.sources, personas, ownerStatements: statements.statements };
 }
 function assert(test, message) { if (!test) throw new Error(message); }
 function text(value, name, max = 5000) {
@@ -105,6 +105,14 @@ export function validate(data) {
     keys(persona,['id','label','introduction','emphasis'],'persona');assert(ID.test(persona.id),'Invalid persona id');
     text(persona.label,'persona label');text(persona.introduction,'persona introduction');strings(persona.emphasis,'persona emphasis');
   }
+  const statementIds=new Set();
+  for(const statement of data.ownerStatements??[]){
+    keys(statement,['id','by','date','source','statement','verification'],'owner statement');
+    assert(ID.test(statement.id)&&!statementIds.has(statement.id)&&statement.by===OWNER,'Invalid or duplicate owner statement');statementIds.add(statement.id);
+    assert(/^\d{4}-\d{2}-\d{2}$/.test(statement.date),'Invalid statement date');
+    text(statement.source,'statement source');text(statement.statement,'owner statement',20000);
+    if(statement.verification!==undefined)text(statement.verification,'statement verification');
+  }
   const pids = new Set();
   projects.forEach(p=>{assert(!pids.has(p.id),'Duplicate project');pids.add(p.id);validateProject(p,ids);});
   const cids = new Set();
@@ -125,6 +133,7 @@ export function publicBundle(data) {
     schemaVersion: 1, profile: data.profile,
     projects: data.projects.filter(publishable).sort((a,b)=>a.order-b.order),
     competitions: data.competitions.filter(publishable), evidence: data.evidence,
+    ownerStatements: data.ownerStatements??[],
     personas: (data.personas??[]).map(p=>({...p,introduction:p.introduction.replace('{{competitionStatus}}',data.competitions.filter(publishable).map(c=>`${c.name}: ${c.status}; ${c.result??(c.submitted?'results pending':'submission unconfirmed')} (source: ${c.review.state}, ${c.review.date}).`).join(' '))}))
   };
   return { ...clean, revision: hash(clean) };

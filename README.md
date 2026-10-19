@@ -1,49 +1,46 @@
 # Roy Identity OS
 
-One evidence-backed source for Roy Wang’s profile, existing Astro portfolio, resume, hackathon record and AI agent context.
+One evidence-backed source for Roy Wang's profile, existing Astro portfolio, resume, hackathon record and shared agent context.
 
-[AI context](AI_CONTEXT.md) · [Portfolio](https://roywg925.github.io/portfolio-astro/) · [Resume](https://roywg925.github.io/portfolio-astro/Roy_Wang_Resume.pdf) · [Introductions](generated/introductions.md) · [LinkedIn drafts](generated/linkedin.md)
+[AI context](AI_CONTEXT.md) | [Portfolio](https://roywg925.github.io/portfolio-astro/) | [Resume](https://roywg925.github.io/portfolio-astro/Roy_Wang_Resume.pdf) | [Introductions](generated/introductions.md) | [LinkedIn drafts](generated/linkedin.md)
+
+## Confirmation without a PR
+
+AI collects public evidence and shows meaningful proposed changes. Roy confirms exact public wording in the conversation. The interactive agent records a scoped, hashed receipt, applies only the approved fields, validates and publishes. No second PR approval is required. Unknown facts stay pending; agreement to this workflow does not approve the entire backlog.
+
+[Chat confirmation and receipt format](docs/CHAT_CONFIRMATION.md) | [Local subscription maintenance](docs/LOCAL_AGENTS.md) | [Operations](docs/OPERATIONS.md) | [Security](docs/SECURITY.md)
 
 ## Hybrid maintenance
 
-- **GitHub Actions**, daily: collect public repository evidence and open independent per-project/snapshot PRs. No model API calls, API key or running PC is needed.
-- **Local Codex**, weekly Sunday 09:30 Taipei: use the existing ChatGPT subscription to analyse implementation, features, tests and milestones, then propose quoted fact updates. Claude Code can use the same skill and an optional subscription adapter.
-- **Roy personally reviews and merges** fact proposals. The publisher checks merger, base hash and source visibility, records a receipt, then regenerates canonical exports. Agents never merge.
-- **Profile and Astro**, hourly or manually: fetch a single immutable source commit, verify export hashes, sync README / JSON / HTML / agent context, regenerate PDF and deploy. Schedules are eventual and may be delayed by GitHub.
-- **LinkedIn** remains a generated draft, with no account automation.
-
-[Install local maintenance](docs/LOCAL_AGENTS.md) · [Operations](docs/OPERATIONS.md) · [Security and manual protection steps](docs/SECURITY.md)
+- GitHub Actions collect evidence daily without a model API or an online PC. Independent candidates are stored in candidates/ without opening PRs.
+- Local Codex runs weekly using the ChatGPT subscription to analyse implementation, tests and milestones. Claude Code can use the same maintained skill. The analysis model cannot author approvals.
+- Roy's actual chat confirmation is recorded with its scope, exact patches, source and base hashes. Legacy personally merged PRs remain supported as an optional route.
+- Profile and Astro consume one immutable source commit, verify the export manifest, sync README/portfolio/context, generate the PDF and deploy hourly or manually.
+- LinkedIn remains draft-only. No paid API or extra service is configured.
 
 ## Canonical data
 
 | Source | Purpose |
 | --- | --- |
-| `profile/public.json` | Published identity, skills, education and product direction |
-| `profile/personas.json` | Four audience-specific introductions using the same facts |
-| `projects/*.json` | Features, contribution, technology, results, limitations and evidence |
-| `competitions/*.json` | Submission state, result and explicit unknowns |
-| `evidence/` | Source commits, corrections and minimal owner statement receipts |
-| `candidates/*.json` | Proposed facts, excluded from every public view |
+| profile/ | Public identity, skills, education and audience-specific emphasis |
+| projects/ and competitions/ | Project facts, roles, limitations and competition status |
+| evidence/ | Public sources, corrections and explicit owner statements |
+| receipts/ | Hashed chat approvals and optional legacy PR provenance |
+| candidates/ | Pending public-source proposals, excluded from generated identity outputs |
 
-`published-baseline` means migrated public material; `owner-attested` records an explicit statement supplied by Roy; `owner-confirmed` includes the personally merged PR and merge commit. These evidence levels are not interchangeable. VIRAL is completed and submitted according to Roy’s statement on 2026-10-19; results are pending. No award is asserted.
+The public repository's candidate files are publicly readable; they are not a private inbox. Private intake remains in the separate private repository. Only an explicitly approved public summary may cross that boundary.
 
-Private intake and application notes are in a separate private repository. Public jobs do not have credentials to read it. A private project’s public demo is not permission to disclose its source or personal attribution.
+published-baseline means migrated public material. owner-attested records an explicit scoped owner statement, including chat confirmation. owner-confirmed denotes the legacy personally merged PR route. VIRAL is submitted with results pending; no award is claimed.
 
-## Development and validation
+## Validation
 
-Node 24; deterministic core uses built-in modules. No model key is required.
+Node 24; core uses built-in modules.
 
-```sh
+~~~sh
 npm test
 npm run generate
 npm run check
-# Real isolated promotion → README → Astro → rendered PDF integration:
-# install portfolio dependencies, Puppeteer 24.40.0 and PyMuPDF first (see CI)
 npm run e2e
-```
+~~~
 
-`generated/export-manifest.json` binds every export to its SHA256. Consumers record source commit and revision; the live `identity-build.json` also records portfolio commit, Actions run and PDF hash. Generated portfolio snapshots are build artifacts rather than tracked stale data. Offline builds verify every local file and fail on drift.
-
-The isolated integration test uses the actual consumers and real Astro/PDF builds. Its fake fact remains in a temporary directory and is never deployed. Actions CI repeats it on pushes and PRs with read-only permissions.
-
-Read [AGENTS.md](AGENTS.md) before proposing a change. Use `scripts/proposals.mjs` / local maintenance to create schema-v2 candidates with evidence fingerprint and canonical base hash. Do not copy a canonical JSON directly into the old aggregate candidate format.
+The isolated E2E exercises chat confirmation, the actual README consumer, Astro build and real Resume PDF. Fixture facts remain temporary and never deploy. Export SHA256s, content revision and deployment source commits make every output traceable. Historical phase-2 reports describe the previous PR-based flow; this README and CHAT_CONFIRMATION.md describe the current behavior.

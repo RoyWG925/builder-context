@@ -1,21 +1,21 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: e8121c1a10d35f8c937b3f63d37373e437887bd1db771494811e025f3eab1773 -->
 # Roy Identity OS - shared agent context
 
 Source: https://github.com/RoyWG925/builder-context
-Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f
+Revision: e8121c1a10d35f8c937b3f63d37373e437887bd1db771494811e025f3eab1773
 
 ## Read this first
 - Public canonical facts live in profile/, projects/, competitions/, and evidence/.
-- published-baseline = migrated existing public material; owner-confirmed = Roy merged a fact proposal. owner-attested = a minimal explicit statement supplied by Roy, with a public statement receipt. These are different evidence levels.
+- published-baseline = migrated existing public material; owner-confirmed = a legacy personally merged fact proposal. owner-attested = a minimal explicit statement supplied by Roy, with a public statement receipt. These are different evidence levels.
 - Never infer employment, proficiency, individual contribution, submission, acceptance, awards, production usage, or business results from repository ownership.
 - Unknown means unknown. Keep limitations attached to numbers and research conclusions.
 - Private material belongs in the separate private repository. Do not quote, copy, or link private repository names into public proposals.
-- Propose new project facts through candidates/<project>-<fingerprint>-<engine>-<base>.json in a PR. Roy reviews and merges. Only an owner merge can promote those candidates.
-- Agents must never merge fact-candidate PRs, even when authenticated as RoyWG925. The owner must confirm personally.
+- New evidence stays in candidates/ and is excluded from generated public views. PRs are optional. Roy can approve exact changes in chat; the interactive agent records a scoped receipt and publishes only those fields.
+- Never invent an owner approval or treat login as approval. Unattended cloud/local agents collect evidence only. Follow scripts/chat-confirm.mjs for actual chat-confirmed publication; do not require a second GitHub click.
 - LinkedIn outputs are drafts. No publishing, messaging, scraping, browser actions, or account mutation is authorized by this file.
 
 ## Profile
-Yuyang (Roy) Wang (王語揚)
+Yuyang (Roy) Wang (���y��)
 AI Engineer & Product Builder
 Building AI-native consumer products, agents and interactive experiences.
 Taipei, Taiwan; Open to Work.
@@ -28,14 +28,14 @@ My direction is AI-native consumer products: I want to build products people use
 
 ## Projects
 ### VIRAL - One whisper, a living town
-Status: deployed; period: 2026; last verified: 2026-10-19; review: published-baseline.
+Status: deployed; period: 2026; last verified: 2026-10-19; review: owner-attested.
 AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.
-Contribution: Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.
+Contribution: Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.
 Technology: TypeScript, Next.js, Gemma, AMD Token Factory
 Results: Published a playable experience with validated model actions and an inspectable chain of causes.
-Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed.
+Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown.
 Lessons: Separate model-generated decisions from deterministic state changes and make failures observable.
-Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
+Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) �P [chat-roy-20261019-chat-attribution](https://github.com/RoyWG925/builder-context/blob/main/receipts/chat-roy-20261019-chat-attribution.json)
 
 ### Market Sentiment x TAIEX
 Status: research-completed; period: 2025; last verified: 2026-10-19; review: published-baseline.
@@ -45,7 +45,7 @@ Technology: Python, PyTorch, Hugging Face Transformers, BERT, SQLite
 Results: Implemented a text ingestion, labeling, model training, and event-study workflow.
 Limitations: The reported 0.683 macro-F1 used a test set overlapping training and tuning. The repository reports 0.580 on a 45-item consensus-labeled holdout. This is a single-event, same-day association study; it does not establish market prediction.
 Lessons: Separate exploratory scores from held-out evaluation and publish corrections when recomputation changes the conclusion.
-Evidence: [ptt-readme](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/README.md) · [ptt-errata](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/ERRATA.md) · [portfolio-existing](https://github.com/RoyWG925/portfolio-astro/blob/14b6f7be999b2dbab116198c97da9e4e13b3313c/src/pages/index.astro)
+Evidence: [ptt-readme](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/README.md) �P [ptt-errata](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/ERRATA.md) �P [portfolio-existing](https://github.com/RoyWG925/portfolio-astro/blob/14b6f7be999b2dbab116198c97da9e4e13b3313c/src/pages/index.astro)
 
 ### Is my major worth it?
 Status: prototype; period: 2025; last verified: 2026-10-19; review: published-baseline.
@@ -69,7 +69,13 @@ Evidence: [nucleus-readme](https://github.com/RoyWG925/nucleus-io/blob/072dae588
 
 ## Competitions
 - AMD Developer Hackathon ACT III, Track 4 - Create a New Kind of Experience, 2026-10. Status: submitted. Submitted: true. Result: unknown. VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.
-  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) · [roy-viral-submitted](https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json)
+  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) �P [roy-viral-submitted](https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json)
+
+## Explicit owner statements
+- Development direction: AI-native Consumer Products, AI Agent Engineering, Creative Technology, Interactive Experiences. Building products with usage, return visits and willingness to pay is an aspiration, not a reported outcome. (Roy, 2026-10-19; Explicit owner instruction during Identity OS phase 2)
+- VIRAL has been completed and submitted to AMD Developer Hackathon ACT III. Competition results have not been announced. (Roy, 2026-10-19; Explicit owner instruction during Identity OS phase 2)
+- Roy independently built BallCrawl and T-MINUS. (Roy, 2026-10-19; Explicit owner statement in the Identity OS conversation)
+- VIRAL is a team project. Roy handled AI Agent testing and iteration; the teammate handled competition materials, interface and visual design; concept and gameplay were shared. (Roy, 2026-10-19; Explicit owner statement in the Identity OS conversation)
 
 ## Skills already published
 Applied NLP: Python, PyTorch, Hugging Face Transformers, BERT fine-tuning, pandas, Jupyter
@@ -80,7 +86,7 @@ Toolchain: Git / GitHub, Cursor, Claude Code, GitHub Copilot, Godot, Figma, Dock
 ## Education
 National Taiwan Normal University (NTNU); B.S. in Learning Sciences; 2021 - 2026
 
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: e8121c1a10d35f8c937b3f63d37373e437887bd1db771494811e025f3eab1773 -->
 # Introductions by audience
 
 ## AI Engineer / Full-stack Engineer

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "approvalHash": "0827a9cf6c724093e9913b361e6d5951a9d5ce301ce7a808d30ab26178027f61",
+  "approval": {
+    "schemaVersion": 1,
+    "id": "roy-20261019-chat-attribution",
+    "visibility": "public",
+    "by": "RoyWG925",
+    "channel": "chat",
+    "confirmedAt": "2026-10-19T13:32:21Z",
+    "ownerStatement": "ballcrawl t-minus���O�ڦۤv����\nVIRAL�O�ڸ򶤤ͤ@�_����\n�ڭt�d AI Agent ���ջP���N\n���t�d ���ɤ��e �����P��ı\n�@�P�t�d �����P���k",
+    "authorizationStatement": "��� ���ӬO�o�� ��ı�oPR���I�h���@�|",
+    "reason": "Roy approved chat-confirmed publication without a repeat GitHub approval. Apply only previously explicit authorship and team responsibilities; unrelated candidate features and metrics remain pending.",
+    "changes": [
+      {
+        "kind": "project",
+        "id": "viral-town",
+        "baseRecordHash": "4b5f59910a9eabb6d1799631edf1536d827d094784b65998110f2014c0f6c9c2",
+        "patch": {
+          "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.",
+          "limitations": [
+            "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
+            "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown."
+          ]
+        }
+      }
+    ],
+    "statements": [
+      {
+        "id": "roy-ballcrawl-tminus-solo",
+        "by": "RoyWG925",
+        "date": "2026-10-19",
+        "source": "Explicit owner statement in the Identity OS conversation",
+        "statement": "Roy independently built BallCrawl and T-MINUS.",
+        "verification": "Owner-attested authorship only. Other candidate features, metrics, project dates and homepage/resume selection remain pending."
+      },
+      {
+        "id": "roy-viral-team-contribution",
+        "by": "RoyWG925",
+        "date": "2026-10-19",
+        "source": "Explicit owner statement in the Identity OS conversation",
+        "statement": "VIRAL is a team project. Roy handled AI Agent testing and iteration; the teammate handled competition materials, interface and visual design; concept and gameplay were shared.",
+        "verification": "Owner-attested division of work. Completion and hackathon submission are previously owner-attested; results remain pending."
+      }
+    ]
+  },
+  "changes": [
+    {
+      "kind": "project",
+      "id": "viral-town",
+      "fields": [
+        "contribution",
+        "limitations"
+      ],
+      "beforeHash": "4b5f59910a9eabb6d1799631edf1536d827d094784b65998110f2014c0f6c9c2",
+      "afterHash": "bfb46e54dc1f528f9d064ea8f1a4524bf5a3d6698282e5537639995bc67f7580"
+    }
+  ],
+  "confirmed": true,
+  "method": "explicit-owner-chat"
+}

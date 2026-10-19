@@ -1,16 +1,16 @@
 # Roy Identity OS - agent contract
 
-Read AI_CONTEXT.md and canonical JSON before writing applications, bios, project summaries or resumes.
+Read the latest immutable AI_CONTEXT.md and generated/public.json before identity, resume or application work.
 
-- Single public source: profile/public.json, projects/*.json, competitions/*.json, evidence/sources.json.
-- Generated outputs are disposable projections. Run `npm run generate`; never hand-edit generated/ or AI_CONTEXT.md.
-- Existing-publication migration is explicitly marked `published-baseline`, not falsely attributed to an owner confirmation.
-- Use skills/roy-identity/SKILL.md and docs/LOCAL_AGENTS.md. New facts use schema-v2 candidates named by scripts/proposals.mjs, with pinned sources, content fingerprint, reason and canonical base hash. The review state must be proposed.
-- After completing a significant project, check for an Identity OS update. Before applications/bios/resumes, fetch the latest AI_CONTEXT.md and select the audience from profile/personas.json. Never rely on an old local snapshot.
-- A PR containing candidates becomes a confirmation only when merged by RoyWG925. The confirmation workflow promotes only candidate files changed in that PR and records the PR and merge commit.
-- Agents must not merge fact-candidate PRs, even when authenticated as RoyWG925. An agent using the owner's credentials is not a human confirmation. Leave the review PR for Roy.
-- Do not invent roles, employment, proficiency, personal authorship, metrics, usage, awards, submission or acceptance. Repository ownership is not proof of individual contribution.
-- Private material belongs in the separate private repository. Public scans use the public user-repositories endpoint only; never authenticate a private scan and then sanitize it into public output.
-- LinkedIn is draft-only. This contract grants no authorization to post, message, operate accounts or submit applications.
-- Read evidence in this order: current correction/errata, current project evidence, existing public material, old resume. Conflicts become proposals; keep caveats with numbers.
-- Run `npm test`, `npm run validate`, and `npm run generate` after editing canonical data. CI checks generated drift, confirmation provenance, output escaping and private-data boundaries.
+- Public canonical data: profile/, projects/, competitions/, evidence/. Generated outputs are disposable; run npm run generate.
+- Roy chose chat confirmation on 2026-10-19. A real, explicit owner confirmation of the shown changes authorizes publication without a PR or a second GitHub approval. Do not treat this workflow preference as approval of every pending candidate.
+- Use scripts/chat-confirm.mjs and docs/CHAT_CONFIRMATION.md for a scoped receipt with original owner wording, public disclosure scope, base hashes and exact field patches. Run the preview, apply, test and commit source plus exports together.
+- Never invent an approval, interpret authentication as approval, or approve extra fields because one fact was confirmed. Existing unrelated evidence and caveats remain unchanged. New projects need a fully reviewed record; a solo-authorship statement alone does not approve all candidate features.
+- Unattended Actions and local subscription agents collect evidence only. scripts/proposals.mjs stores independent proposed candidates on main without creating PRs. candidates/ is public source but excluded from generated profile, site, resume and context facts.
+- PRs remain optional for code collaboration or when Roy chooses them. The legacy human-merge publisher is compatible, not mandatory. Agents do not merge unknown facts; chat-approved changes use direct scoped publication.
+- Preserve source commits, SHA256 receipt hashes and change reasons. Stale approval bases stop publication; pending stale candidates do not block unrelated confirmed changes.
+- Use skills/roy-identity/SKILL.md. After a significant project, check for a meaningful evidence update. Select the audience from profile/personas.json without changing facts.
+- Repository ownership does not establish sole authorship, component responsibility, proficiency, usage, revenue, submission or an award. Read current corrections before old public material.
+- Private material stays in the separate private repository. Public collectors enumerate public owned repositories without privileged private reads. Publishing a selected private-project summary requires explicit disclosure approval for that exact summary.
+- LinkedIn and application material are drafts. This contract grants no authority to post, message or submit applications.
+- After approved edits run npm test, npm run generate and npm run check; verify the deployed content revision.

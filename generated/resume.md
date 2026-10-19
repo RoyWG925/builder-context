@@ -1,8 +1,8 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: e8121c1a10d35f8c937b3f63d37373e437887bd1db771494811e025f3eab1773 -->
 # Yuyang (Roy) Wang
 AI Engineer & Product Builder
 
-jg971402@gmail.com · https://github.com/RoyWG925 · https://roywg925.github.io/portfolio-astro/
+jg971402@gmail.com �P https://github.com/RoyWG925 �P https://roywg925.github.io/portfolio-astro/
 
 ## Education
 National Taiwan Normal University (NTNU) - B.S. in Learning Sciences (2021 - 2026)
@@ -11,9 +11,9 @@ National Taiwan Normal University (NTNU) - B.S. in Learning Sciences (2021 - 202
 ### VIRAL - One whisper, a living town (2026)
 https://github.com/RoyWG925/viral-town
 AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.
-Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.
+Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.
 - Published a playable experience with validated model actions and an inspectable chain of causes.
-Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed.
+Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown.
 
 ### Market Sentiment x TAIEX (2025)
 https://github.com/RoyWG925/ptt-sentiment-stock-analysis

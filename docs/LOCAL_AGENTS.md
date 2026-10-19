@@ -1,6 +1,6 @@
 # Local subscription maintenance
 
-Cloud Actions monitor public source, validate, propose evidence PRs and publish approved facts without a model API or an online PC. Weekly local Codex performs deeper implementation analysis using the existing ChatGPT subscription. Claude Code is an optional subscription adapter. No API key or paid service is provisioned. Subscription quotas still apply.
+Cloud Actions monitor public source, validate, queue evidence and publish chat-approved facts without a model API or an online PC. Weekly local Codex performs deeper implementation analysis using the existing ChatGPT subscription. Claude Code is an optional subscription adapter. No API key or paid service is provisioned. Subscription quotas still apply.
 
 ## Windows setup
 
@@ -27,7 +27,7 @@ Manual execution from the installed checkout:
 ```powershell
 # Analyse and save candidates locally; no GitHub writes
 .\local\Invoke-IdentityMaintenance.ps1
-# Analyse a completed public project and open a fact-review PR
+# Analyse a completed public project and queue a fact proposal for chat review
 .\local\Invoke-IdentityMaintenance.ps1 -Repository viral-town -Publish
 # Explicit reanalysis after correcting evidence/context
 .\local\Invoke-IdentityMaintenance.ps1 -Repository viral-town -Publish -Force
@@ -39,7 +39,7 @@ Unregister-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Confirm:$false
 
 `local/config.json` and `local/local-state/` are ignored by Git. Config supports engine, CLI path, repository allowlist, batch size and timeout. State records successful published/skipped analysis fingerprints; dry runs do not suppress a later publish. An exclusive lock prevents overlapping runs. After a crash, check no task/CLI is running before removing `run.lock`. Logs and bounded source packs remain local. No provider token is printed or copied.
 
-The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy’s review.
+The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy��s review.
 
 The isolated Codex invocation additionally disables command-execution tools and web search, and sets project-instruction loading to zero bytes. Its required Identity Skill and current context are explicitly supplied in the prompt, reducing accidental inheritance of unrelated personal instructions. These controls do not replace human review or a separate OS account for stronger isolation. Reference: https://developers.openai.com/codex/config-reference
 
@@ -51,10 +51,14 @@ Use your existing Claude subscription login (`claude auth login`) and set `engin
 
 The maintained skill source is `skills/roy-identity/SKILL.md`. Installer copies it to `~/.agents/skills/roy-identity/` and `~/.claude/skills/roy-identity/`. It does not replace existing AGENTS.md/CLAUDE.md. Paste this block into global/project instructions or a Grok custom instruction:
 
-> Before writing Roy Wang’s resume, biography, application or introduction, resolve RoyWG925/builder-context main to an immutable commit and read AI_CONTEXT.md at that commit. Use generated/introductions.json for the audience. After finishing a meaningful project, compare its actual implementation/tests with the canonical record and propose an evidence-backed Identity OS update. Preserve source commit, exact quotes, attribution limits and change reason. Private evidence stays private; a public demo is not disclosure approval. Never merge fact PRs, even when logged in as RoyWG925. LinkedIn is draft-only. If GitHub writes are unavailable, return a proposed JSON change and questions for Roy.
+> Before identity or application work, read the latest immutable RoyWG925/builder-context AI_CONTEXT.md and generated/public.json, including ownerStatements. After a project milestone, queue evidence-backed candidates. When Roy explicitly confirms the exact public changes in the current conversation, preserve a scoped receipt and publish through scripts/chat-confirm.mjs without a second PR approval. Never invent approval or accept unrelated pending fields. Private evidence stays private; a demo is not disclosure approval. LinkedIn remains draft-only. If writes are unavailable, return the exact patch and evidence.
 
 For external tools without GitHub access, open https://github.com/RoyWG925/builder-context/blob/main/AI_CONTEXT.md and paste the current context manually. This is a usable instruction, not an assertion that Grok was remotely configured.
 
 ## Verified environment limitations (2026-10-19)
 
-This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user’s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.
+This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user��s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.
+
+## Chat approval
+
+-Publish on maintenance means queue evidence, not confirm facts. Only an interactive agent with an actual owner confirmation uses the separate [chat publisher](CHAT_CONFIRMATION.md). The local runner cannot read unrelated conversations or automatically identify approvals there.

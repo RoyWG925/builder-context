@@ -5,7 +5,7 @@
     "visibility": "public",
     "name": "Roy Wang",
     "fullName": "Yuyang (Roy) Wang",
-    "nameZh": "王語揚",
+    "nameZh": "���y��",
     "github": "RoyWG925",
     "headline": "AI Engineer & Product Builder",
     "tagline": "Building AI-native consumer products, agents and interactive experiences.",
@@ -101,7 +101,7 @@
       "visibility": "public",
       "name": "VIRAL - One whisper, a living town",
       "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
-      "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
+      "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.",
       "technologies": [
         "TypeScript",
         "Next.js",
@@ -117,21 +117,26 @@
       ],
       "limitations": [
         "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
-        "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed."
+        "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown."
       ],
       "lessons": [
         "Separate model-generated decisions from deterministic state changes and make failures observable."
       ],
       "evidence": [
-        "viral-readme"
+        "viral-readme",
+        "chat-roy-20261019-chat-attribution"
       ],
       "lastVerified": "2026-10-19",
       "featured": true,
       "order": 1,
       "review": {
-        "state": "published-baseline",
+        "state": "owner-attested",
+        "by": "RoyWG925",
         "date": "2026-10-19",
-        "basis": "Public repository describes the project; does not attest to individual contribution or competition outcome."
+        "evidence": [
+          "chat-roy-20261019-chat-attribution"
+        ],
+        "basis": "Chat approval for contribution, limitations. Unchanged fields retain their prior evidence (published-baseline). Receipt SHA256: 0827a9cf6c724093e9913b361e6d5951a9d5ce301ce7a808d30ab26178027f61."
       }
     },
     {
@@ -352,6 +357,47 @@
       "kind": "repository",
       "checkedAt": "2026-10-19",
       "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49"
+    },
+    {
+      "id": "chat-roy-20261019-chat-attribution",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/builder-context/blob/main/receipts/chat-roy-20261019-chat-attribution.json",
+      "kind": "owner-attestation",
+      "checkedAt": "2026-10-19",
+      "commit": null
+    }
+  ],
+  "ownerStatements": [
+    {
+      "id": "roy-phase2-direction",
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner instruction during Identity OS phase 2",
+      "statement": "Development direction: AI-native Consumer Products, AI Agent Engineering, Creative Technology, Interactive Experiences. Building products with usage, return visits and willingness to pay is an aspiration, not a reported outcome."
+    },
+    {
+      "id": "roy-viral-submitted",
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner instruction during Identity OS phase 2",
+      "statement": "VIRAL has been completed and submitted to AMD Developer Hackathon ACT III. Competition results have not been announced.",
+      "verification": "Owner attestation; no official submission receipt or award independently verified."
+    },
+    {
+      "id": "roy-ballcrawl-tminus-solo",
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner statement in the Identity OS conversation",
+      "statement": "Roy independently built BallCrawl and T-MINUS.",
+      "verification": "Owner-attested authorship only. Other candidate features, metrics, project dates and homepage/resume selection remain pending."
+    },
+    {
+      "id": "roy-viral-team-contribution",
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner statement in the Identity OS conversation",
+      "statement": "VIRAL is a team project. Roy handled AI Agent testing and iteration; the teammate handled competition materials, interface and visual design; concept and gameplay were shared.",
+      "verification": "Owner-attested division of work. Completion and hackathon submission are previously owner-attested; results remain pending."
     }
   ],
   "personas": [
@@ -396,5 +442,5 @@
       ]
     }
   ],
-  "revision": "1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f"
+  "revision": "e8121c1a10d35f8c937b3f63d37373e437887bd1db771494811e025f3eab1773"
 }
