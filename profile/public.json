@@ -31,5 +31,5 @@
     {"category": "Interactive UI", "items": ["Three.js / WebGL", "GLSL shaders", "Framer Motion", "CSS animation"]},
     {"category": "Toolchain", "items": ["Git / GitHub", "Cursor", "Claude Code", "GitHub Copilot", "Godot", "Figma", "Docker"]}
   ],
-  "review": {"state": "published-baseline", "basis": "Migrated existing public profile and portfolio; not a new owner attestation.", "date": "2026-10-19", "evidence": ["profile-existing", "portfolio-existing"]}
+  "review": {"state": "published-baseline", "basis": "Existing public profile/portfolio baseline. Product direction and aspirations additionally supplied by Roy in the phase-2 instruction; this does not newly attest every baseline field.", "date": "2026-10-19", "evidence": ["profile-existing", "portfolio-existing", "roy-phase2-direction"]}
 }

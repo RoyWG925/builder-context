@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "sources": [
-    {"id":"roy-phase2-direction","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":null},
-    {"id":"roy-viral-submitted","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":null},
+    {"id":"roy-phase2-direction","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":"01747c61348e3bcced4530737be0b3cf8c57ee08"},
+    {"id":"roy-viral-submitted","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":"01747c61348e3bcced4530737be0b3cf8c57ee08"},
     {
       "id": "profile-existing",
       "visibility": "public",

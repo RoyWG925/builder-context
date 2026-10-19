@@ -86,11 +86,12 @@
     ],
     "review": {
       "state": "published-baseline",
-      "basis": "Migrated existing public profile and portfolio; not a new owner attestation.",
+      "basis": "Existing public profile/portfolio baseline. Product direction and aspirations additionally supplied by Roy in the phase-2 instruction; this does not newly attest every baseline field.",
       "date": "2026-10-19",
       "evidence": [
         "profile-existing",
-        "portfolio-existing"
+        "portfolio-existing",
+        "roy-phase2-direction"
       ]
     }
   },
@@ -283,18 +284,18 @@
     {
       "id": "roy-phase2-direction",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json",
+      "url": "https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json",
       "kind": "owner-attestation",
       "checkedAt": "2026-10-19",
-      "commit": null
+      "commit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
     },
     {
       "id": "roy-viral-submitted",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json",
+      "url": "https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json",
       "kind": "owner-attestation",
       "checkedAt": "2026-10-19",
-      "commit": null
+      "commit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
     },
     {
       "id": "profile-existing",
@@ -395,5 +396,5 @@
       ]
     }
   ],
-  "revision": "35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c"
+  "revision": "588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48"
 }

@@ -1,8 +1,8 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48 -->
 # Roy Identity OS - shared agent context
 
 Source: https://github.com/RoyWG925/builder-context
-Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c
+Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48
 
 ## Read this first
 - Public canonical facts live in profile/, projects/, competitions/, and evidence/.
@@ -69,7 +69,7 @@ Evidence: [nucleus-readme](https://github.com/RoyWG925/nucleus-io/blob/072dae588
 
 ## Competitions
 - AMD Developer Hackathon ACT III, Track 4 - Create a New Kind of Experience, 2026-10. Status: submitted. Submitted: true. Result: unknown. VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.
-  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) · [roy-viral-submitted](https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json)
+  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) · [roy-viral-submitted](https://github.com/RoyWG925/builder-context/blob/01747c61348e3bcced4530737be0b3cf8c57ee08/evidence/owner-statements.json)
 
 ## Skills already published
 Applied NLP: Python, PyTorch, Hugging Face Transformers, BERT fine-tuning, pandas, Jupyter
@@ -80,7 +80,7 @@ Toolchain: Git / GitHub, Cursor, Claude Code, GitHub Copilot, Godot, Figma, Dock
 ## Education
 National Taiwan Normal University (NTNU); B.S. in Learning Sciences; 2021 - 2026
 
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48 -->
 # Introductions by audience
 
 ## AI Engineer / Full-stack Engineer

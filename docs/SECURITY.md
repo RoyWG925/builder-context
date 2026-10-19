@@ -26,6 +26,10 @@ Apply the same compatible baseline to:
 
 Actions settings: https://github.com/RoyWG925/builder-context/settings/actions → General → Workflow permissions. Keep default read permissions; workflows explicitly request their minimal scopes. `Allow GitHub Actions to create and approve pull requests` is required by GitHub for proposal creation (already enabled in phase 1); the code never approves PRs. Do not add model secrets. Review third-party Action updates; current actions are pinned to immutable SHAs.
 
+## Observed dependency audit
+
+The existing Astro lockfile's `npm ci` reported 12 dependency advisories (1 low, 10 high, 1 critical) during the phase-2 build on 2026-10-19. Identity synchronization uses Node built-ins and did not add those dependencies. The site is statically built, but advisory counts alone do not establish exploitability or absence of risk. A dependency-by-dependency remediation and regression audit remains outstanding; no blind major upgrade was applied to the existing design.
+
 ## Private disclosure
 
 Private assessments and applications are maintained only in the private repository. To publish a private project, Roy must explicitly approve a selected public summary and attribution, not merely authorize the agent to read its private code. Public demos do not waive this gate. Unknown organizations/programs/application status remain private pending questions. No history, finance, grades, private contact or credentials are included in public exports.

@@ -95,6 +95,9 @@ export function validate(data) {
     keys(e,['id','visibility','url','kind','checkedAt','commit'],'evidence');
     assert(ID.test(e.id) && !ids.has(e.id) && e.visibility === 'public', 'Duplicate or private evidence');
     safeUrl(e.url); ids.add(e.id);
+    assert(['existing-publication','repository','correction','repository-snapshot','owner-attestation'].includes(e.kind),'Unknown evidence kind');
+    assert(/^\d{4}-\d{2}-\d{2}$/.test(e.checkedAt),'Invalid evidence date');
+    assert(e.commit===null||/^[a-f0-9]{40}$/.test(e.commit),'Invalid evidence version');
   }
   p.education.forEach(e=>{keys(e,['institution','degree','period','evidence'],'education');text(e.institution,'institution');text(e.degree,'degree');text(e.period,'period');assert(e.evidence.length && e.evidence.every(id=>ids.has(id)),'Missing education evidence');});
   for(const record of [p,...projects,...competitions])if(record.review.state==='owner-attested')assert(record.review.evidence.every(id=>evidence.some(e=>e.id===id&&e.kind==='owner-attestation')),'Missing owner attestation evidence');
@@ -131,7 +134,7 @@ export async function api(path, options = {}) {
   assert(path.startsWith('/') && !path.startsWith('//'), 'Relative GitHub API path required');
   const response = await fetch(`https://api.github.com${path}`, {
     ...options,
-    headers: { Accept:'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28', ...(process.env.GH_TOKEN ? {Authorization:`Bearer ${process.env.GH_TOKEN}`} : {}), ...options.headers },
+    headers: { Accept:'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28', ...(options.body?{'Content-Type':'application/json'}:{}), ...(process.env.GH_TOKEN ? {Authorization:`Bearer ${process.env.GH_TOKEN}`} : {}), ...options.headers },
     signal: AbortSignal.timeout(30000)
   });
   if(!response.ok) throw new Error(`GitHub ${response.status} ${path}`);
