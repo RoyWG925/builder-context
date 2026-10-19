@@ -1,8 +1,8 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 24ebcc124bdd0ff3a11389f6f9c73e73f220d29fac2371fed3a63eb4fc76b068 -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab -->
 # Roy Identity OS - shared agent context
 
 Source: https://github.com/RoyWG925/builder-context
-Revision: 24ebcc124bdd0ff3a11389f6f9c73e73f220d29fac2371fed3a63eb4fc76b068
+Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab
 
 ## Read this first
 - Public canonical facts live in profile/, projects/, competitions/, and evidence/.
@@ -11,6 +11,7 @@ Revision: 24ebcc124bdd0ff3a11389f6f9c73e73f220d29fac2371fed3a63eb4fc76b068
 - Unknown means unknown. Keep limitations attached to numbers and research conclusions.
 - Private material belongs in the separate private repository. Do not quote, copy, or link private repository names into public proposals.
 - Propose new project facts through candidates/<id>.json in a PR. Roy reviews and merges. Only an owner merge can promote those candidates.
+- Agents must never merge fact-candidate PRs, even when authenticated as RoyWG925. The owner must confirm personally.
 - LinkedIn outputs are drafts. No publishing, messaging, scraping, browser actions, or account mutation is authorized by this file.
 
 ## Profile
@@ -34,7 +35,7 @@ Technology: TypeScript, Next.js, Gemma, AMD Token Factory
 Results: Published a playable experience with validated model actions and an inspectable chain of causes.
 Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Submission, acceptance, awards, and Roy's precise team contribution are not confirmed.
 Lessons: Separate model-generated decisions from deterministic state changes and make failures observable.
-Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/master/README.md)
+Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
 
 ### Market Sentiment x TAIEX
 Status: research-completed; period: 2025; last verified: 2026-10-19; review: published-baseline.
@@ -44,7 +45,7 @@ Technology: Python, PyTorch, Hugging Face Transformers, BERT, SQLite
 Results: Implemented a text ingestion, labeling, model training, and event-study workflow.
 Limitations: The reported 0.683 macro-F1 used a test set overlapping training and tuning. The repository reports 0.580 on a 45-item consensus-labeled holdout. This is a single-event, same-day association study; it does not establish market prediction.
 Lessons: Separate exploratory scores from held-out evaluation and publish corrections when recomputation changes the conclusion.
-Evidence: [ptt-readme](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/README.md) · [ptt-errata](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/ERRATA.md) · [portfolio-existing](https://github.com/RoyWG925/portfolio-astro/blob/main/src/pages/index.astro)
+Evidence: [ptt-readme](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/README.md) · [ptt-errata](https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/ERRATA.md) · [portfolio-existing](https://github.com/RoyWG925/portfolio-astro/blob/14b6f7be999b2dbab116198c97da9e4e13b3313c/src/pages/index.astro)
 
 ### Is my major worth it?
 Status: prototype; period: 2025; last verified: 2026-10-19; review: published-baseline.
@@ -54,7 +55,7 @@ Technology: Python, Streamlit, Plotly, pandas
 Results: Joined admission and field-level salary data and built an interactive exploration interface.
 Limitations: Salary data are at field level, not individual program outcomes. No public server demo is documented.
 Lessons: Make data grain and proxy assumptions visible alongside comparisons.
-Evidence: [university-readme](https://github.com/RoyWG925/taiwan-uni-cp-value/blob/main/README.md)
+Evidence: [university-readme](https://github.com/RoyWG925/taiwan-uni-cp-value/blob/5881b1df4347ecf449ae94f946afc4733a2d3afb/README.md)
 
 ### NUCLEUS.IO
 Status: deployed; period: 2026; last verified: 2026-10-19; review: published-baseline.
@@ -64,11 +65,11 @@ Technology: Three.js, WebGL, GLSL, Vite, Web Audio API
 Results: Published an interactive WebGL portfolio with flight, project exploration, and synthesized audio.
 Limitations: Requires a browser with WebGL2.
 Lessons: Use interaction and motion to make a portfolio explorable.
-Evidence: [nucleus-readme](https://github.com/RoyWG925/nucleus-io/blob/main/README.md)
+Evidence: [nucleus-readme](https://github.com/RoyWG925/nucleus-io/blob/072dae5886fef81107f1dc1e6b31f63b527140bc/README.md)
 
 ## Competitions
 - AMD Developer Hackathon ACT III, Track 4 - Create a New Kind of Experience, 2026-10. Status: project-prepared. Submitted: unknown. Result: unknown. VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.
-  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/master/README.md)
+  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
 
 ## Skills already published
 Applied NLP: Python, PyTorch, Hugging Face Transformers, BERT fine-tuning, pandas, Jupyter

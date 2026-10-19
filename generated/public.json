@@ -277,52 +277,59 @@
     {
       "id": "profile-existing",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/RoyWG925/blob/main/README.md",
+      "url": "https://github.com/RoyWG925/RoyWG925/blob/7676f64a8d08cb290a77e635df6245c0134cd2cd/README.md",
       "kind": "existing-publication",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "7676f64a8d08cb290a77e635df6245c0134cd2cd"
     },
     {
       "id": "portfolio-existing",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/portfolio-astro/blob/main/src/pages/index.astro",
+      "url": "https://github.com/RoyWG925/portfolio-astro/blob/14b6f7be999b2dbab116198c97da9e4e13b3313c/src/pages/index.astro",
       "kind": "existing-publication",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "14b6f7be999b2dbab116198c97da9e4e13b3313c"
     },
     {
       "id": "ptt-readme",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/README.md",
+      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/README.md",
       "kind": "repository",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "731cfbb089427efbf47026e3235be029d3c46fb6"
     },
     {
       "id": "ptt-errata",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/ERRATA.md",
+      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/731cfbb089427efbf47026e3235be029d3c46fb6/ERRATA.md",
       "kind": "correction",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "731cfbb089427efbf47026e3235be029d3c46fb6"
     },
     {
       "id": "university-readme",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/taiwan-uni-cp-value/blob/main/README.md",
+      "url": "https://github.com/RoyWG925/taiwan-uni-cp-value/blob/5881b1df4347ecf449ae94f946afc4733a2d3afb/README.md",
       "kind": "repository",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "5881b1df4347ecf449ae94f946afc4733a2d3afb"
     },
     {
       "id": "nucleus-readme",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/nucleus-io/blob/main/README.md",
+      "url": "https://github.com/RoyWG925/nucleus-io/blob/072dae5886fef81107f1dc1e6b31f63b527140bc/README.md",
       "kind": "repository",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "072dae5886fef81107f1dc1e6b31f63b527140bc"
     },
     {
       "id": "viral-readme",
       "visibility": "public",
-      "url": "https://github.com/RoyWG925/viral-town/blob/master/README.md",
+      "url": "https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md",
       "kind": "repository",
-      "checkedAt": "2026-10-19"
+      "checkedAt": "2026-10-19",
+      "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49"
     }
   ],
-  "revision": "24ebcc124bdd0ff3a11389f6f9c73e73f220d29fac2371fed3a63eb4fc76b068"
+  "revision": "61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab"
 }

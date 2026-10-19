@@ -7,6 +7,7 @@ Read AI_CONTEXT.md and canonical JSON before writing applications, bios, project
 - Existing-publication migration is explicitly marked `published-baseline`, not falsely attributed to an owner confirmation.
 - New facts go in candidates/<project-id>.json with `kind: project`, `record`, and `sources`. The record's review state must be `proposed`.
 - A PR containing candidates becomes a confirmation only when merged by RoyWG925. The confirmation workflow promotes only candidate files changed in that PR and records the PR and merge commit.
+- Agents must not merge fact-candidate PRs, even when authenticated as RoyWG925. An agent using the owner's credentials is not a human confirmation. Leave the review PR for Roy.
 - Do not invent roles, employment, proficiency, personal authorship, metrics, usage, awards, submission or acceptance. Repository ownership is not proof of individual contribution.
 - Private material belongs in the separate private repository. Public scans use the public user-repositories endpoint only; never authenticate a private scan and then sanitize it into public output.
 - LinkedIn is draft-only. This contract grants no authorization to post, message, operate accounts or submit applications.

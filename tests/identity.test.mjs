@@ -42,4 +42,14 @@ test('owner confirmation promotes only changed candidates, records provenance an
   assert.ok(generated.projects.some(p=>p.id==='new-demo'));assert.ok(!generated.projects.some(p=>p.id==='untouched'));
 });
 test('AI disabled mode does not call any remote provider',async()=>{const old=process.env.IDENTITY_AI_API_KEY;delete process.env.IDENTITY_AI_API_KEY;try{assert.equal(await suggest({readme:'evidence'}),null);}finally{if(old)process.env.IDENTITY_AI_API_KEY=old;}});
+test('owner-confirmed competition proposal records submission without inventing an award',async()=>{
+  const root=await mkdtemp(join(tmpdir(),'identity-comp-'));
+  for(const dir of ['profile','projects','competitions','evidence','templates'])await cp(dir,join(root,dir),{recursive:true});
+  const record=structuredClone(data.competitions[0]);record.status='submitted';record.submitted=true;record.review={state:'proposed',date:'2026-10-19'};
+  await save(join(root,`candidates/${record.id}.json`),{kind:'competition',record,sources:[]});
+  assert.equal(await promote(root,ownerEvent(),[`candidates/${record.id}.json`]),1);
+  const result=JSON.parse(await readFile(join(root,'generated/public.json'),'utf8')).competitions[0];
+  assert.equal(result.submitted,true);assert.equal(result.result,null);assert.equal(result.review.by,'RoyWG925');assert.equal(result.review.pr,7);
+});
+test('private nested evidence and education fields fail closed',()=>{for(const modify of [d=>d.profile.education[0].privateGpa='secret',d=>d.evidence[0].privateNote='secret',d=>d.competitions[0].privateContact='secret']){const d=copy();modify(d);assert.throws(()=>publicBundle(d),/Unexpected/);}});
 test('generation is deterministic and stale files are detected',async()=>{const root=await mkdtemp(join(tmpdir(),'identity-gen-'));for(const dir of ['profile','projects','competitions','evidence','templates'])await cp(dir,join(root,dir),{recursive:true});await generate(root);await generate(root,true);await writeFile(join(root,'generated/profile-readme.md'),'stale');await assert.rejects(generate(root,true),/Stale/);});
