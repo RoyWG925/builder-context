@@ -6,7 +6,7 @@
     "visibility": "public",
     "name": "VIRAL - One whisper, a living town",
     "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
-    "contribution": "A team project built by Roy and a teammate, as explicitly confirmed by Roy on 2026-10-19. Individual responsibilities have not yet been specified.",
+    "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design; they jointly handled concept and gameplay, as explicitly confirmed by Roy on 2026-10-19.",
     "technologies": [
       "TypeScript",
       "Next.js 16",
@@ -26,7 +26,7 @@
     "limitations": [
       "The 157-test figure is repository-reported at commit cbab86c5b978cfa522cf2c3307a8bad236e2db49; no new test execution is claimed.",
       "Live model latency varies; peak-time stories may take several minutes. Human entertainment/playtesting evidence is not established.",
-      "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results remain pending. Team collaboration is confirmed; individual component responsibilities await Roy’s clarification."
+      "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results remain pending. The division of work is owner-attested on 2026-10-19."
     ],
     "lessons": [
       "Separate model-generated decisions from deterministic state changes and make failures observable."
@@ -77,13 +77,18 @@
       }
     ],
     "checks": [],
-    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending.",
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Roy clarified team collaboration and division of work on 2026-10-19.",
     "ownerAttestation": {
       "by": "RoyWG925",
       "date": "2026-10-19",
       "source": "Explicit owner clarification in Identity OS conversation",
-      "statement": "VIRAL是我跟隊友一起做的",
-      "scope": "Team project confirmed; individual division of work not supplied."
+      "statement": "VIRAL是我跟隊友一起做的\n我負責 AI Agent 測試與迭代\n對方負責 參賽內容 介面與視覺\n共同負責 企劃與玩法",
+      "scope": "Owner-attested team division of work. The teammate's legal name and component-level authorship beyond these stated responsibilities are not supplied.",
+      "divisionOfWork": {
+        "roy": "AI Agent 測試與迭代",
+        "teammate": "參賽內容、介面與視覺",
+        "shared": "企劃與玩法"
+      }
     },
     "attributionEvidence": [
       {
