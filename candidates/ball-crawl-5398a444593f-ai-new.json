@@ -6,7 +6,7 @@
     "visibility": "public",
     "name": "BallCrawl",
     "summary": "Godot game prototype combining dice-based board movement with a turn-based ball-shooting phase and monster encounters.",
-    "contribution": "Repository ownership verified. Individual contribution and team attribution await Roy’s confirmation.",
+    "contribution": "Roy independently built BallCrawl, as explicitly confirmed by Roy on 2026-10-19.",
     "technologies": [
       "Godot 4.6",
       "GDScript",
@@ -23,7 +23,7 @@
     "limitations": [
       "Archived prototype; no packaged release, player usage or revenue was verified.",
       "GUT test files exist, but no test pass count or executed result is claimed.",
-      "Individual authorship, team work, imported assets and intended project status require Roy’s confirmation."
+      "Project dates, third-party asset attribution and current project status still require confirmation."
     ],
     "lessons": [],
     "evidence": [
@@ -71,7 +71,14 @@
       }
     ],
     "checks": [],
-    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending."
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending.",
+    "ownerAttestation": {
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner clarification in Identity OS conversation",
+      "statement": "ballcrawl t-minus都是我自己做的",
+      "scope": "Roy confirms solo project authorship; dates and external-asset details remain unspecified."
+    }
   },
   "baseCanonicalCommit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
 }
