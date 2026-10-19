@@ -2,7 +2,7 @@
 # Yuyang (Roy) Wang
 AI Engineer & Product Builder
 
-jg971402@gmail.com �P https://github.com/RoyWG925 �P https://roywg925.github.io/portfolio-astro/
+jg971402@gmail.com · https://github.com/RoyWG925 · https://roywg925.github.io/portfolio-astro/
 
 ## Education
 National Taiwan Normal University (NTNU) - B.S. in Learning Sciences (2021 - 2026)

@@ -39,7 +39,7 @@ Unregister-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Confirm:$false
 
 `local/config.json` and `local/local-state/` are ignored by Git. Config supports engine, CLI path, repository allowlist, batch size and timeout. State records successful published/skipped analysis fingerprints; dry runs do not suppress a later publish. An exclusive lock prevents overlapping runs. After a crash, check no task/CLI is running before removing `run.lock`. Logs and bounded source packs remain local. No provider token is printed or copied.
 
-The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy��s review.
+The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy’s review.
 
 The isolated Codex invocation additionally disables command-execution tools and web search, and sets project-instruction loading to zero bytes. Its required Identity Skill and current context are explicitly supplied in the prompt, reducing accidental inheritance of unrelated personal instructions. These controls do not replace human review or a separate OS account for stronger isolation. Reference: https://developers.openai.com/codex/config-reference
 
@@ -57,7 +57,7 @@ For external tools without GitHub access, open https://github.com/RoyWG925/build
 
 ## Verified environment limitations (2026-10-19)
 
-This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user��s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.
+This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user’s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.
 
 ## Chat approval
 

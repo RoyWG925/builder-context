@@ -6,7 +6,7 @@ The primary confirmation channel is the owner's interactive chat. Follow CHAT_CO
 
 Default discovery writes independent proposed files to candidates/ on main. Existing candidates are deduplicated; a pending or stale item cannot block another confirmed update. Approval still rejects stale bases. Close migrated legacy PRs without merging unconfirmed facts.
 
-Consumers resolve canonical main to one commit, download exports at that SHA and verify SHA256 manifest plus public states. A source docs-only commit can be newer than a deployed receipt without content drift: compare **revision**, then use the receipt��s immutable commit to reproduce the exact artifacts. Astro no longer commits generated snapshots. To build offline, first perform a valid sync; any tampered/missing generated file stops the build.
+Consumers resolve canonical main to one commit, download exports at that SHA and verify SHA256 manifest plus public states. A source docs-only commit can be newer than a deployed receipt without content drift: compare **revision**, then use the receipt’s immutable commit to reproduce the exact artifacts. Astro no longer commits generated snapshots. To build offline, first perform a valid sync; any tampered/missing generated file stops the build.
 
 Manual cloud runs are available at:
 

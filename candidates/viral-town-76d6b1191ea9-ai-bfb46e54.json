@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "viral-town",
+    "visibility": "public",
+    "name": "VIRAL - One whisper, a living town",
+    "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+    "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.",
+    "technologies": [
+      "TypeScript",
+      "Next.js 16",
+      "React 19",
+      "React Three Fiber",
+      "Three.js",
+      "Gemma",
+      "AMD Token Factory"
+    ],
+    "status": "deployed",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/viral-town",
+    "demo": "https://viral-town.vercel.app",
+    "results": [
+      "Repository README reports 157 tests in 16 suites for validators, engine invariants and scripted-model behavior. Command: node --test lab/test-*.ts. This count was not independently rerun in phase 2."
+    ],
+    "limitations": [
+      "The 157-test figure is repository-reported at commit cbab86c5b978cfa522cf2c3307a8bad236e2db49; no new test execution is claimed.",
+      "Live model latency varies; peak-time stories may take several minutes. Human entertainment/playtesting evidence is not established.",
+      "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results remain pending. The division of work is owner-attested on 2026-10-19."
+    ],
+    "lessons": [
+      "Separate model-generated decisions from deterministic state changes and make failures observable."
+    ],
+    "evidence": [
+      "viral-readme",
+      "scan-viral-town-cbab86c5b978",
+      "chat-roy-20261019-chat-attribution"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 1,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-viral-town-cbab86c5b978",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/viral-town/tree/cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49"
+    }
+  ],
+  "baseRecordHash": "bfb46e54dc1f528f9d064ea8f1a4524bf5a3d6698282e5537639995bc67f7580",
+  "discovery": {
+    "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+    "fingerprint": "76d6b1191ea9c51d8d0d6648afbf1011b50d930739cd3dbf2b8bdbefb84dc462",
+    "engine": "codex-work-evidence-review",
+    "reason": "Capture implemented agent/simulation architecture, actual dependency versions and scoped repository-reported test evidence. Preserve owner-attested submission and pending results.",
+    "claims": [
+      {
+        "kind": "result",
+        "path": "README.md",
+        "quote": "157 tests in 16 suites"
+      },
+      {
+        "kind": "technology",
+        "path": "package.json",
+        "quote": "\"next\": \"16.4.2\""
+      },
+      {
+        "kind": "feature",
+        "path": "README.md",
+        "quote": "Every model answer is JSON that the engine parses, normalises and validates"
+      }
+    ],
+    "checks": [],
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Roy clarified team collaboration and division of work on 2026-10-19. Migrated from a legacy PR into the pending queue after Roy selected chat confirmation. Published owner statements are separate from remaining unconfirmed implementation claims.",
+    "ownerAttestation": {
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner clarification in Identity OS conversation",
+      "statement": "VIRAL是我跟隊友一起做的\n我負責 AI Agent 測試與迭代\n對方負責 參賽內容 介面與視覺\n共同負責 企劃與玩法",
+      "scope": "Owner-attested team division of work. The teammate's legal name and component-level authorship beyond these stated responsibilities are not supplied.",
+      "divisionOfWork": {
+        "roy": "AI Agent 測試與迭代",
+        "teammate": "參賽內容、介面與視覺",
+        "shared": "企劃與玩法"
+      }
+    },
+    "attributionEvidence": [
+      {
+        "url": "https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/CLAUDE.md",
+        "finding": "Public collaboration rules name Roy and jielle2453, each using Claude Code. The rules assign PR integration and production deployment to Roy. Other component responsibilities are recorded in a separate collaborative document not inspected here.",
+        "scope": "Documented collaboration arrangement; not proof of exclusive authorship or completed component work."
+      }
+    ]
+  },
+  "baseCanonicalCommit": "7dfd0d03b24a3aa50be48cf0a92526e6f525d650"
+}

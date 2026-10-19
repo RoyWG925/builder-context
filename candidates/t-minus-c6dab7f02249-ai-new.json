@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "t-minus",
+    "visibility": "public",
+    "name": "T-MINUS",
+    "summary": "Single-page event countdown experience with animated cards, category filters and browser-local voting/follow interactions.",
+    "contribution": "Roy independently built T-MINUS, as explicitly confirmed by Roy on 2026-10-19.",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Canvas",
+      "localStorage"
+    ],
+    "status": "archived-repository",
+    "period": "Date requires owner confirmation",
+    "repository": "https://github.com/RoyWG925/T-MINUS",
+    "demo": null,
+    "results": [
+      "Source contains event countdown rendering and localStorage-backed interaction state; no active community or multi-user backend is established."
+    ],
+    "limitations": [
+      "Archived repository; current hosted availability was not independently tested.",
+      "Browser-local vote state does not demonstrate real shared community votes, users or retention.",
+      "Project dates, reused assets and current project maturity still require confirmation."
+    ],
+    "lessons": [],
+    "evidence": [
+      "scan-t-minus-aa7d1026d237"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": false,
+    "order": 5,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-t-minus-aa7d1026d237",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/T-MINUS/tree/aa7d1026d2370672ae4296c6f241afd59f60738b",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "aa7d1026d2370672ae4296c6f241afd59f60738b"
+    }
+  ],
+  "baseRecordHash": null,
+  "discovery": {
+    "commit": "aa7d1026d2370672ae4296c6f241afd59f60738b",
+    "fingerprint": "c6dab7f022492d9b2f0eeb02c7e8ad0ee9d35f4d5931ded12444b5b1642b71b9",
+    "engine": "codex-work-evidence-review",
+    "reason": "Include an archived interactive web prototype, while correcting the distinction between local browser voting and an actual shared community service.",
+    "claims": [
+      {
+        "kind": "feature",
+        "path": "index.html",
+        "quote": "function voteHype(btn, id)"
+      },
+      {
+        "kind": "limitation",
+        "path": "index.html",
+        "quote": "localStorage.getItem(key)"
+      },
+      {
+        "kind": "feature",
+        "path": "index.html",
+        "quote": "function renderHero()"
+      }
+    ],
+    "checks": [],
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending. Migrated from a legacy PR into the pending queue after Roy selected chat confirmation. Published owner statements are separate from remaining unconfirmed implementation claims.",
+    "ownerAttestation": {
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner clarification in Identity OS conversation",
+      "statement": "ballcrawl t-minus都是我自己做的",
+      "scope": "Roy confirms solo project authorship; dates and external-asset details remain unspecified."
+    }
+  },
+  "baseCanonicalCommit": "7dfd0d03b24a3aa50be48cf0a92526e6f525d650"
+}
