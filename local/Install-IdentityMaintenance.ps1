@@ -12,6 +12,8 @@ $identityCheckout=Join-Path $identityInstall 'builder-context'
 if (!(Test-Path -LiteralPath $identityCheckout)) { & git clone https://github.com/RoyWG925/builder-context.git $identityCheckout; if ($LASTEXITCODE -ne 0) { throw 'Clone failed' } }
 $identityRemote=(& git -C $identityCheckout remote get-url origin).Trim()
 if ($identityRemote -notmatch 'github\.com[:/]RoyWG925/builder-context(?:\.git)?$') { throw 'Unexpected checkout remote; refusing to use it.' }
+if (@(& git -C $identityCheckout status --porcelain).Count -gt 0) { throw 'Checkout has local changes; preserving them. Resolve them before reinstalling.' }
+if ((& git -C $identityCheckout branch --show-current).Trim() -ne 'main') { throw 'Maintenance checkout must be on main; preserving the current branch.' }
 & git -C $identityCheckout pull --ff-only
 if ($LASTEXITCODE -ne 0) { throw 'Checkout has divergent/local changes; resolve them before installing.' }
 $identityConfig=Join-Path $identityCheckout 'local/config.json'
@@ -32,12 +34,12 @@ if ($RegisterWeeklyTask) {
   if ((Get-TimeZone).Id -ne 'Taipei Standard Time') { throw 'Weekly task expects Taipei Standard Time. Configure your intended timezone or create a trigger manually.' }
   $identityPowerShell=(Get-Command powershell.exe).Source
   $identityRunner=Join-Path $identityCheckout 'local/Run-ScheduledMaintenance.ps1'
-  $identityAction=New-ScheduledTaskAction -Execute $identityPowerShell -Argument ('-NoProfile -File "'+$identityRunner+'" -Config "'+$identityConfig+'"') -WorkingDirectory $identityCheckout
+  $identityAction=New-ScheduledTaskAction -Execute $identityPowerShell -Argument ('-NoProfile -NonInteractive -WindowStyle Hidden -File "'+$identityRunner+'" -Config "'+$identityConfig+'"') -WorkingDirectory $identityCheckout
   $identityTrigger=New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At '09:30'
   $identityPrincipal=New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
-  $identityTaskSettings=New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Hours 1)
-  Register-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Action $identityAction -Trigger $identityTrigger -Principal $identityPrincipal -Settings $identityTaskSettings -Description 'Local subscription AI analysis; evidence PRs only, no merges. Sunday 09:30 Taipei.' -Force | Out-Null
+  $identityTaskSettings=New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Hours 1)
+  Register-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Action $identityAction -Trigger $identityTrigger -Principal $identityPrincipal -Settings $identityTaskSettings -Description 'ChatGPT subscription analysis; pending candidates only. Sunday 09:30 Taipei; chat confirmation required to publish facts.' -Force | Out-Null
 }
 Write-Host "Installed: $identityCheckout"
 Write-Host "Manual dry run: & `"$identityCheckout\local\Invoke-IdentityMaintenance.ps1`" -Config `"$identityConfig`""
-Write-Host 'Add -Publish to create candidate PRs. No model API key is used.'
+Write-Host 'Add -Publish to queue unconfirmed candidates for chat review. No model API key is used.'

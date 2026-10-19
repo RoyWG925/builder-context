@@ -37,7 +37,11 @@ Start-ScheduledTask -TaskName 'Roy Identity OS Weekly'
 Unregister-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Confirm:$false
 ```
 
-`local/config.json` and `local/local-state/` are ignored by Git. Config supports engine, CLI path, repository allowlist, batch size and timeout. State records successful published/skipped analysis fingerprints; dry runs do not suppress a later publish. An exclusive lock prevents overlapping runs. After a crash, check no task/CLI is running before removing `run.lock`. Logs and bounded source packs remain local. No provider token is printed or copied.
+`local/config.json` and `local/local-state/` are ignored by Git. Config supports engine, CLI path, repository allowlist, batch size, timeout, Codex reasoning effort (default `high`) and bounded source-pack size (default 40 documents / 240,000 characters). Source selection rotates across documentation, manifests, architecture areas, tests and workflows, rather than letting one source directory crowd out tests. Coverage and omitted excerpts are reported explicitly. State records successful published/skipped analysis fingerprints, including the current identity revision and analysis contract; dry runs do not suppress a later publish. An exclusive lock prevents overlapping runs. After a crash, check no task/CLI is running before removing `run.lock`. Logs and bounded source packs remain local. No provider token is printed or copied.
+
+Each analysis directory retains `evidence.json`, `analysis.json`, `model-events.jsonl`, `model-stderr.log`, `status.json`, validated candidates and a success `receipt.json`. Codex acceptance requires a real `turn.completed` event with token usage and rejects unexpected tool actions. A separate local assessment covers existing facts, new findings, technical decisions, test evidence, limitations and attribution. Exact-quote validation still rejects unsupported candidates; there is no automatic retry loop. `local/local-state/last-run.json` records the latest result or error, and the scheduled wrapper also keeps a PowerShell transcript. Timeout cleanup terminates the launched CLI process tree on Windows.
+
+Repository text uses LF via `.gitattributes`: export and approval hashes must survive a Windows clone without Git converting their exact bytes to CRLF. The installer and scheduled updater preserve dirty checkouts and require the maintenance branch to be `main`. The named task is updated in place, runs at limited privilege in an interactive user session, permits battery operation and ignores overlapping scheduled starts. API-key/workload overrides and inherited Codex app-session identifiers are removed from the model environment; authentication remains in Codex's existing local credential store.
 
 The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy’s review.
 
@@ -55,9 +59,9 @@ The maintained skill source is `skills/roy-identity/SKILL.md`. Installer copies 
 
 For external tools without GitHub access, open https://github.com/RoyWG925/builder-context/blob/main/AI_CONTEXT.md and paste the current context manually. This is a usable instruction, not an assertion that Grok was remotely configured.
 
-## Verified environment limitations (2026-10-19)
+## Historical cloud-session limitations (2026-10-19)
 
-This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user’s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.
+The earlier cloud Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. Its GitHub CLI authentication was invalid, and its subscription smoke invocation could not write the user's `.codex` state directory. These observations describe that session, not the current Windows login or installation. Verify local acceptance separately using the installed runner's success receipt, model events and Windows task state. Installer/script syntax and deterministic tests alone do not establish live model success.
 
 ## Chat approval
 

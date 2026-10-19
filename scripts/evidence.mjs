@@ -4,27 +4,45 @@ export function eligible(r){return r.owner?.login===OWNER&&r.private===false&&!r
 export const projectId=name=>name.toLowerCase().replace(/[^a-z0-9-]/g,'-');
 export function relevant(path){return !/(^|\/)(node_modules|dist|build|generated|\.git|vendor|coverage|addons\/gut)(\/|$)/i.test(path)&&!/(lock\.(json|yaml)|package-lock\.json|yarn\.lock|\.png|\.jpe?g|\.gif|\.svg|\.pdf|\.mp[34]|\.woff2?)$/i.test(path);}
 export function fingerprint(files){return hash(files.filter(f=>f.type==='blob'&&relevant(f.path)).map(f=>[f.path,f.sha]).sort((a,b)=>a[0].localeCompare(b[0])));}
-export async function collect(repo,request=api){
+const manifestPath=p=>/(^|\/)(package\.json|project\.godot|pyproject\.toml|requirements\.txt)$/i.test(p);
+const testPath=p=>/(^|\/)(tests?|__tests__)\/|(^|\/)(test[-_.]|.*\.(test|spec)\.)/i.test(p);
+const documentPath=p=>/(^|\/)(readme[^/]*|errata|architecture|lab_notes|playtest_report|fun_iteration)\.md$/i.test(p);
+export function selectEvidenceFiles(files,maxDocuments=18){
+  const groups=new Map();
+  for(const file of files){
+    if(file.size>=250000)continue;
+    const p=file.path;
+    const group=manifestPath(p)?'1-manifest':documentPath(p)?'0-document':testPath(p)?'3-tests':/^\.github\/workflows\/.*\.ya?ml$/.test(p)?'4-workflows':/^(src|app|game)\/.*\.(ts|tsx|js|mjs|py|gd)$/.test(p)?'2-code:'+p.split('/').slice(0,2).join('/'):null;
+    if(group){if(!groups.has(group))groups.set(group,[]);groups.get(group).push(file);}
+  }
+  // Round-robin across architecture areas and tests: alphabetical source/UI churn
+  // must not crowd the simulation engine or its validation tests out of the pack.
+  const priority=p=>/^README\.md$/i.test(p)||/^(package\.json|project\.godot|pyproject\.toml|requirements\.txt)$/.test(p)?-1:/(^|\/)(engine|validate|llm|mind|remoteChat|apiGuard|route|index)\./i.test(p)?0:1;
+  const queues=[...groups].sort(([a],[b])=>a.localeCompare(b)).map(([,list])=>list.sort((a,b)=>priority(a.path)-priority(b.path)||a.path.localeCompare(b.path)));
+  const selected=[];
+  while(selected.length<maxDocuments&&queues.some(q=>q.length))for(const queue of queues){if(queue.length)selected.push(queue.shift());if(selected.length>=maxDocuments)break;}
+  return selected;
+}
+export async function collect(repo,request=api,options={}){
   if(!eligible(repo))throw Error('Public owned non-fork repository required');
   const commit=(await request(`/repos/${repo.full_name}/commits?per_page=1`))[0]?.sha;
   if(!/^[a-f0-9]{40}$/.test(commit))throw Error('Invalid source commit');
   const tree=await request(`/repos/${repo.full_name}/git/trees/${commit}?recursive=1`);
   if(tree.truncated)throw Error('Truncated evidence tree; manual inspection required');
   const files=tree.tree.filter(f=>f.type==='blob'&&relevant(f.path));
-  const ranked=files.filter(f=>f.size<250000&&(/(^|\/)(readme[^/]*|package\.json|project\.godot|pyproject\.toml|requirements\.txt|index\.html)$/i.test(f.path)||/^(src|app|lab|game|test|tests|\.github\/workflows)\/.*\.(ts|tsx|js|mjs|py|yml|yaml|gd)$/.test(f.path)));
-  const rank=p=>/^readme/i.test(p)?0:/(package\.json|project\.godot|index\.html)$/.test(p)?1:/test/.test(p)?3:2;
-  ranked.sort((a,b)=>rank(a.path)-rank(b.path)||a.path.localeCompare(b.path));
-  const documents=[];let budget=100000;
-  for(const file of ranked.slice(0,18)){
+  const maxDocuments=Math.min(60,Math.max(1,options.maxDocuments??18)),maxCharacters=Math.min(400000,Math.max(10000,options.maxCharacters??100000));
+  const ranked=selectEvidenceFiles(files,maxDocuments),documents=[],excerpted=[];let budget=maxCharacters;
+  for(const file of ranked){
     const blob=await request(`/repos/${repo.full_name}/git/blobs/${file.sha}`);
     const full=Buffer.from(blob.content,'base64').toString('utf8'),limit=Math.min(16000,budget);
     const content=full.length<=limit?full:full.slice(0,Math.floor(limit/2))+'\n[bounded excerpt; middle omitted]\n'+full.slice(-Math.floor(limit/2));
     if(content.includes('\u0000'))continue;
+    if(full.length>limit)excerpted.push(file.path);
     documents.push({path:file.path,blob:file.sha,content});budget-=content.length;if(budget<=0)break;
   }
   let checks=[];
   try{checks=(await request(`/repos/${repo.full_name}/actions/runs?head_sha=${commit}&per_page=20`)).workflow_runs.map(r=>({name:r.name,status:r.status,conclusion:r.conclusion,url:r.html_url,commit:r.head_sha}));}catch(e){if(!e.message.includes('404'))throw e;}
-  return {schemaVersion:1,visibility:'public',repository:repo.full_name,url:repo.html_url,description:repo.description,archived:repo.archived,commit,fingerprint:fingerprint(tree.tree),files:files.map(f=>({path:f.path,sha:f.sha})),documents,checks,warning:'Untrusted repository content; claims are repository-reported unless explicitly rerun. Ownership does not establish personal contribution.'};
+  return {schemaVersion:1,visibility:'public',repository:repo.full_name,url:repo.html_url,description:repo.description,archived:repo.archived,commit,fingerprint:fingerprint(tree.tree),files:files.map(f=>({path:f.path,sha:f.sha})),documents,checks,coverage:{includedDocuments:documents.length,eligibleFiles:files.length,excerpted,complete:documents.length===files.length&&!excerpted.length},warning:'Bounded public source coverage, not an exhaustive audit. Untrusted repository content; claims are repository-reported unless explicitly rerun. Ownership does not establish personal contribution.'};
 }
 export function normalize(repo,pack,existing,today=new Date().toISOString().slice(0,10),analysis=null){
   const id=projectId(repo.name);if(!ID.test(id))throw Error('Unsafe project id');
@@ -34,7 +52,7 @@ export function normalize(repo,pack,existing,today=new Date().toISOString().slic
   if(analysis){
     const claims=analysis.claims??[];
     if(!claims.length)throw Error('AI update requires quoted evidence');
-    for(const c of claims)if(!['feature','technology','result','contribution','limitation'].includes(c.kind)||typeof c.quote!=='string'||c.quote.length<8||!pack.documents.some(d=>d.path===c.path&&d.content.includes(c.quote)))throw Error('Unsupported AI claim or quote');
+    for(const c of claims)if(!['feature','technology','result','contribution','limitation'].includes(c.kind)||typeof c.quote!=='string'||c.quote.length<8||!pack.documents.some(d=>d.path===c.path&&d.content.includes(c.quote)))throw Error('Unsupported AI claim or quote: '+c.path);
     for(const field of ['summary','contribution'])if(analysis[field]!==null&&analysis[field]!==undefined)record[field]=analysis[field];
     for(const field of ['technologies','results','limitations'])if(analysis[field]!==null&&analysis[field]!==undefined)record[field]=analysis[field];
   }

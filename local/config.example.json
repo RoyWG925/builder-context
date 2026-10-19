@@ -1,9 +1,11 @@
 {
   "engine":"codex",
+  "reasoningEffort":"high",
   "stateDirectory":"./local-state",
   "maxRepositories":6,
   "timeoutMinutes":30,
   "codexEntry":null,
+  "sourcePack":{"maxDocuments":40,"maxCharacters":240000},
   "claudeCommand":"claude",
   "repositories":[]
 }
