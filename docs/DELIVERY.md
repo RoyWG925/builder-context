@@ -1,4 +1,6 @@
-# Roy Identity OS - delivery and verification
+# Phase 1 historical delivery and verification
+
+This is the phase-1 snapshot. The current subscription-based architecture, verification and remaining setup are documented in PHASE2_DELIVERY.md, LOCAL_AGENTS.md and SECURITY.md. The former optional model API setup below is historical and has been removed.
 
 Verified on 2026-10-19. The public source, Profile consumer and existing Astro site are deployed. AI-authored discovery is implemented but requires a provider credential; the tested discovery run used explicitly labelled evidence-only mode.
 

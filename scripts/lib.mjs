@@ -124,7 +124,8 @@ export function publicBundle(data) {
   const clean = {
     schemaVersion: 1, profile: data.profile,
     projects: data.projects.filter(publishable).sort((a,b)=>a.order-b.order),
-    competitions: data.competitions.filter(publishable), evidence: data.evidence, personas: data.personas??[]
+    competitions: data.competitions.filter(publishable), evidence: data.evidence,
+    personas: (data.personas??[]).map(p=>({...p,introduction:p.introduction.replace('{{competitionStatus}}',data.competitions.filter(publishable).map(c=>`${c.name}: ${c.status}; ${c.result??(c.submitted?'results pending':'submission unconfirmed')} (source: ${c.review.state}, ${c.review.date}).`).join(' '))}))
   };
   return { ...clean, revision: hash(clean) };
 }

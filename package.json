@@ -12,6 +12,7 @@
     "scan": "node scripts/scan.mjs",
     "confirm": "node scripts/confirm.mjs",
     "e2e": "node scripts/e2e.mjs",
+    "verify:live": "node scripts/verify-live.mjs",
     "maintain": "node scripts/local-agent.mjs",
     "pdf": "node scripts/render-pdf.cjs generated/resume.html generated/Roy_Wang_Resume.pdf"
   }

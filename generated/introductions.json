@@ -1,5 +1,5 @@
 {
-  "revision": "588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48",
+  "revision": "1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f",
   "personas": [
     {
       "id": "ai-engineer",
@@ -34,7 +34,7 @@
     {
       "id": "hackathon",
       "label": "Hackathon Applications",
-      "introduction": "I am Roy Wang, an AI product builder interested in agent systems and new interactive experiences. VIRAL combines model-generated character decisions with deterministic simulation. I have completed and submitted VIRAL to AMD Developer Hackathon ACT III; results are pending, according to my statement on 2026-10-19.",
+      "introduction": "I am Roy Wang, an AI product builder interested in agent systems and new interactive experiences. VIRAL combines model-generated character decisions with deterministic simulation. AMD Developer Hackathon ACT III: submitted; results pending (source: owner-attested, 2026-10-19).",
       "emphasis": [
         "Working prototype and traceable technical evidence",
         "Individual and team contribution must be confirmed per application",

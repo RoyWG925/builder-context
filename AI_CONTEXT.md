@@ -1,8 +1,8 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48 -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f -->
 # Roy Identity OS - shared agent context
 
 Source: https://github.com/RoyWG925/builder-context
-Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48
+Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f
 
 ## Read this first
 - Public canonical facts live in profile/, projects/, competitions/, and evidence/.
@@ -80,7 +80,7 @@ Toolchain: Git / GitHub, Cursor, Claude Code, GitHub Copilot, Godot, Figma, Dock
 ## Education
 National Taiwan Normal University (NTNU); B.S. in Learning Sciences; 2021 - 2026
 
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 588ade93817c2e714d7ff11e6be4b690ceda4dba26a7639dcce0c41cfd2fbb48 -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f -->
 # Introductions by audience
 
 ## AI Engineer / Full-stack Engineer
@@ -105,7 +105,7 @@ Emphasis: VIRAL: emergent narrative and visible causality; Nucleus.io: interacti
 Select only relevant projects from the current public bundle. Project and team attribution limits still apply.
 
 ## Hackathon Applications
-I am Roy Wang, an AI product builder interested in agent systems and new interactive experiences. VIRAL combines model-generated character decisions with deterministic simulation. I have completed and submitted VIRAL to AMD Developer Hackathon ACT III; results are pending, according to my statement on 2026-10-19.
+I am Roy Wang, an AI product builder interested in agent systems and new interactive experiences. VIRAL combines model-generated character decisions with deterministic simulation. AMD Developer Hackathon ACT III: submitted; results pending (source: owner-attested, 2026-10-19).
 
 Emphasis: Working prototype and traceable technical evidence; Individual and team contribution must be confirmed per application; Submission is not acceptance or an award
 
