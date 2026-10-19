@@ -17,15 +17,17 @@ Verified 2026-10-19. Phase 2 modifies the existing repositories; no replacement 
 | RoyWG925 | README sync adapter/workflow and `identity-source.json`: manifest-verified README with immutable source receipt; manual source-commit replay |
 | Private intake repository | Separate project assessments, attribution, expected versus executed tests, disclosure questions and pending programs/applications; no private project facts copied into public exports |
 
-Code anchors: source data/export commit [b92601c](https://github.com/RoyWG925/builder-context/commit/b92601c47bee6b168597540e01e1ad93423e7dd1); portfolio [bd82a2c](https://github.com/RoyWG925/portfolio-astro/commit/bd82a2c2124f2bb53ef8e55d2cf437b216917f19); profile workflow [0ea5bfa](https://github.com/RoyWG925/RoyWG925/commit/0ea5bfae8c0112e0e72b028bb24e627b427e4aea). Later documentation/local-runner commits may be newer without changing the public content revision.
+Code anchors: source data/export commit [b92601c](https://github.com/RoyWG925/builder-context/commit/b92601c47bee6b168597540e01e1ad93423e7dd1); portfolio [6d33e30](https://github.com/RoyWG925/portfolio-astro/commit/6d33e30dc53ace9f19f88a2435b89a1e3d7bf095); profile workflow [0ea5bfa](https://github.com/RoyWG925/RoyWG925/commit/0ea5bfae8c0112e0e72b028bb24e627b427e4aea). Later documentation/local-runner commits may be newer without changing the public content revision.
+
+Local development also synchronizes data through the `predev` hook before `npm run dev`, so a fresh checkout does not require a committed snapshot.
 
 ## Tests and live versions
 
-Local core suite: **21 passed**. PowerShell files parsed successfully. Skill frontmatter validator passed (Python UTF-8 mode). Cloud validation and real isolated E2E succeeded at [39247485075](https://github.com/RoyWG925/builder-context/actions/runs/39247485075); [latest source CI](https://github.com/RoyWG925/builder-context/actions/workflows/ci.yml) covers subsequent code/report commits.
+Local core suite: **21 passed**. PowerShell files parsed successfully. Skill frontmatter validator passed (Python UTF-8 mode). Cloud validation and real isolated E2E succeeded at [39248180696](https://github.com/RoyWG925/builder-context/actions/runs/39248180696); [latest source CI](https://github.com/RoyWG925/builder-context/actions/workflows/ci.yml) covers subsequent code/report commits.
 
 The E2E test copies canonical data into a temporary workspace, simulates an owner-confirmed candidate, generates actual exports, calls the real Profile and Astro consumers, performs a real Astro build and Puppeteer PDF render, extracts PDF text, checks revision/source receipts, verifies original controls and rejects a tampered offline file. The fixture is never committed as a fact or deployed. A production human merge was not performed by this agent.
 
-Final published content revision:
+Recorded public content revision (see phase2-verification.json for the exact verification snapshot):
 
 `1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f`
 
@@ -33,12 +35,12 @@ Final published content revision:
 | --- | --- |
 | Canonical generated exports | revision above; source `b92601c47bee6b168597540e01e1ad93423e7dd1` |
 | Profile README | exact export SHA256 verified; profile commit `6ed91231db806b7bb6bdf321b206130e1d7484da`; same source/revision |
-| Astro homepage / public JSON | same source/revision; portfolio commit `bd82a2c2124f2bb53ef8e55d2cf437b216917f19` |
+| Astro homepage / public JSON | same revision; source `208d81791f8d39547e502dc2bedb96f7f6c55faa`; portfolio commit `6d33e30dc53ace9f19f88a2435b89a1e3d7bf095` |
 | HTML resume / AI context | exact export hashes verified; same revision |
 | Resume PDF | same revision in extracted text; one page; submission says results pending; no fixture text |
 | Persona / application / LinkedIn drafts | generated from the same revision; competition status has one canonical source |
 
-PDF SHA256: `6e15a0c88c01ae3e517caed2475f1c4c46fa505d4fb1e1f331d0bdf1181a2650`.
+PDF SHA256 at the recorded deployment run (later rebuild metadata may change it; the live receipt records the current hash): `b6d282edaee1a5f63372d1a0954cbe2a8587bd8bade29e6440ccc3f6216847b2`.
 
 [Live build receipt](https://roywg925.github.io/portfolio-astro/identity-build.json) records the exact source commit, portfolio commit, Actions run and PDF hash. GitHub Raw caches mutable branch URLs for about 5 minutes and Pages responses for about 10 minutes. Live verification resolves Profile main to an immutable SHA and checks Pages with a revision query; the website’s PDF download links also carry the revision.
 
@@ -46,7 +48,7 @@ Successful operational runs:
 
 - [Public evidence scan 39246362404](https://github.com/RoyWG925/builder-context/actions/runs/39246362404): six public project repositories inspected with three pending PRs; four accepted/identical snapshots skipped, two covered by existing AI review; no duplicate PR generated.
 - [Profile sync 39247608360](https://github.com/RoyWG925/RoyWG925/actions/runs/39247608360): success.
-- [Astro/PDF deployment 39247656422](https://github.com/RoyWG925/portfolio-astro/actions/runs/39247656422): success.
+- [Astro/PDF deployment 39248341930](https://github.com/RoyWG925/portfolio-astro/actions/runs/39248341930): success.
 - Initial rollout run 39245504372 attempt 1 failed because consumers started before the new manifest was available. It stopped rather than serving an old snapshot; attempt 2 succeeded. This failure was diagnosed, not hidden.
 - Closing the unmerged legacy PR produced an expected **skipped** confirmation job; no new fact was confirmed.
 

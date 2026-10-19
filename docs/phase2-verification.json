@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "revision": "1426d56864527c2a23ef63065d0b02c14aef25c987f04de4b02ad73a8fb4b58f",
+  "canonicalHead": "208d81791f8d39547e502dc2bedb96f7f6c55faa",
+  "profileHead": "6ed91231db806b7bb6bdf321b206130e1d7484da",
+  "profileSourceCommit": "b92601c47bee6b168597540e01e1ad93423e7dd1",
+  "portfolioSourceCommit": "208d81791f8d39547e502dc2bedb96f7f6c55faa",
+  "portfolioCommit": "6d33e30dc53ace9f19f88a2435b89a1e3d7bf095",
+  "portfolioRun": "39248341930",
+  "pdfSha256": "b6d282edaee1a5f63372d1a0954cbe2a8587bd8bade29e6440ccc3f6216847b2",
+  "cachePolicy": "Profile fetched by immutable head; Pages checked using revision query to avoid previous-deployment CDN cache.",
+  "checks": [
+    "README export hash",
+    "bundle content revision",
+    "HTML/context hashes",
+    "PDF hash",
+    "featured project names",
+    "original controls",
+    "no isolated fixture"
+  ],
+  "recordedAt": "2026-10-19T12:02:07.746Z"
+}
