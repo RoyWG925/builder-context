@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "viral-town",
+    "visibility": "public",
+    "name": "VIRAL - One whisper, a living town",
+    "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+    "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
+    "technologies": [
+      "TypeScript",
+      "Next.js 16",
+      "React 19",
+      "React Three Fiber",
+      "Three.js",
+      "Gemma",
+      "AMD Token Factory"
+    ],
+    "status": "deployed",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/viral-town",
+    "demo": "https://viral-town.vercel.app",
+    "results": [
+      "Repository README reports 157 tests in 16 suites for validators, engine invariants and scripted-model behavior. Command: node --test lab/test-*.ts. This count was not independently rerun in phase 2."
+    ],
+    "limitations": [
+      "The 157-test figure is repository-reported at commit cbab86c5b978cfa522cf2c3307a8bad236e2db49; no new test execution is claimed.",
+      "Live model latency varies; peak-time stories may take several minutes. Human entertainment/playtesting evidence is not established.",
+      "Roy confirms completed and submitted to AMD Developer Hackathon ACT III on 2026-10-19; results pending. Individual component ownership and team attribution need confirmation."
+    ],
+    "lessons": [
+      "Separate model-generated decisions from deterministic state changes and make failures observable."
+    ],
+    "evidence": [
+      "viral-readme",
+      "scan-viral-town-cbab86c5b978"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 1,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-viral-town-cbab86c5b978",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/viral-town/tree/cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49"
+    }
+  ],
+  "baseRecordHash": "4b5f59910a9eabb6d1799631edf1536d827d094784b65998110f2014c0f6c9c2",
+  "discovery": {
+    "commit": "cbab86c5b978cfa522cf2c3307a8bad236e2db49",
+    "fingerprint": "76d6b1191ea9c51d8d0d6648afbf1011b50d930739cd3dbf2b8bdbefb84dc462",
+    "engine": "codex-work-evidence-review",
+    "reason": "Capture implemented agent/simulation architecture, actual dependency versions and scoped repository-reported test evidence. Preserve owner-attested submission and pending results.",
+    "claims": [
+      {
+        "kind": "result",
+        "path": "README.md",
+        "quote": "157 tests in 16 suites"
+      },
+      {
+        "kind": "technology",
+        "path": "package.json",
+        "quote": "\"next\": \"16.4.2\""
+      },
+      {
+        "kind": "feature",
+        "path": "README.md",
+        "quote": "Every model answer is JSON that the engine parses, normalises and validates"
+      }
+    ],
+    "checks": [],
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending."
+  },
+  "baseCanonicalCommit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
+}
