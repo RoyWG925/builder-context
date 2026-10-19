@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "viral-town",
+    "visibility": "public",
+    "name": "VIRAL - One whisper, a living town",
+    "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+    "contribution": "Roy handled AI Agent testing and iteration; his teammate handled competition materials, interface and visual design. They jointly developed the concept and gameplay.",
+    "technologies": [
+      "TypeScript",
+      "Next.js",
+      "Gemma",
+      "AMD Token Factory"
+    ],
+    "status": "deployed",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/viral-town",
+    "demo": "https://viral-town.vercel.app",
+    "results": [
+      "Published a playable experience with validated model actions and an inspectable chain of causes.",
+      "Includes bounded, cancellable streamed model requests and offline regression tests for resident knowledge boundaries, causal summaries, conversation continuity and invalid responses. Test execution was not independently verified."
+    ],
+    "limitations": [
+      "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
+      "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Division of work is explicitly owner-attested; competition results remain unknown."
+    ],
+    "lessons": [
+      "Separate model-generated decisions from deterministic state changes and make failures observable."
+    ],
+    "evidence": [
+      "viral-readme",
+      "chat-roy-20261019-chat-attribution",
+      "scan-viral-town-79dd8b742894"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": true,
+    "order": 1,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-viral-town-79dd8b742894",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/viral-town/tree/79dd8b742894bdc6b296c1544c4ccc2bcc7e2768",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "79dd8b742894bdc6b296c1544c4ccc2bcc7e2768"
+    }
+  ],
+  "baseRecordHash": "bfb46e54dc1f528f9d064ea8f1a4524bf5a3d6698282e5537639995bc67f7580",
+  "discovery": {
+    "commit": "79dd8b742894bdc6b296c1544c4ccc2bcc7e2768",
+    "fingerprint": "a2427f94a88c0232b54cf31bbce3a8a412f3fafdd6af54c8967182d25e32d93a",
+    "engine": "local-subscription-agent",
+    "reason": "For the AI Engineer / Full-stack Engineer audience, add concrete evidence of model-request controls and regression coverage that the current results omit. Preserve attribution, submission status and existing limitations.",
+    "claims": [
+      {
+        "kind": "result",
+        "path": "README.md",
+        "quote": "> **Play it:** https://viral-town.vercel.app · MIT licensed."
+      },
+      {
+        "kind": "result",
+        "path": "README.md",
+        "quote": "can trace any outcome back to the sentence. Streamed tokens are used only to start a resident's gesture early; the"
+      },
+      {
+        "kind": "feature",
+        "path": "src/sim/llm.ts",
+        "quote": "export const ROUTE_CALL_BUDGET_MS = 150_000;"
+      },
+      {
+        "kind": "feature",
+        "path": "src/sim/llm.ts",
+        "quote": "signal: opts.signal ? AbortSignal.any([timeout, opts.signal]) : timeout,"
+      },
+      {
+        "kind": "feature",
+        "path": "src/app/api/gemma/route.ts",
+        "quote": "const signal = AbortSignal.any([req.signal, gone.signal]);"
+      },
+      {
+        "kind": "feature",
+        "path": "src/app/api/gemma/route.ts",
+        "quote": "return new Response(out, { headers: { \"Content-Type\": \"application/x-ndjson\", \"Cache-Control\": \"no-store\" } });"
+      },
+      {
+        "kind": "result",
+        "path": "lab/test-cards.ts",
+        "quote": "test(\"a new secret can be said by its holder and is rejected from someone who could not know it\", () => {"
+      },
+      {
+        "kind": "result",
+        "path": "lab/test-causality.ts",
+        "quote": "test(\"P20 budget-journalist: the rally's chain is the article that reached Rosa, not a call made after the rally\", () => {"
+      },
+      {
+        "kind": "result",
+        "path": "lab/test-conversation.ts",
+        "quote": "test(\"the listener answers on the spot, and the speaker waits for it instead of walking home\", async () => {"
+      },
+      {
+        "kind": "result",
+        "path": "lab/test-faults.ts",
+        "quote": "test(\"garbage instead of JSON: retried, then a safe fallback; nothing happens in the world\", async () => {"
+      }
+    ],
+    "checks": [],
+    "notes": "Bounded public source coverage, not an exhaustive audit. Untrusted repository content; claims are repository-reported unless explicitly rerun. Ownership does not establish personal contribution."
+  },
+  "baseCanonicalCommit": "113ccc85bec8204dc1182ed551b00d3b00d6d5af"
+}
