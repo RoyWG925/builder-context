@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.private/
+private/
+tmp/
+*.log
+generated/*.pdf
+generated/*.png

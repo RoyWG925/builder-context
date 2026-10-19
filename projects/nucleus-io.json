@@ -1,0 +1,20 @@
+{
+  "id": "nucleus-io",
+  "visibility": "public",
+  "name": "NUCLEUS.IO",
+  "summary": "Flyable 3D portfolio built with Three.js, custom GLSL post-processing, procedural audio, and interactive project orbs.",
+  "contribution": "Roy Wang's developer portfolio, as identified in its public README.",
+  "technologies": ["Three.js", "WebGL", "GLSL", "Vite", "Web Audio API"],
+  "status": "deployed",
+  "period": "2026",
+  "repository": "https://github.com/RoyWG925/nucleus-io",
+  "demo": "https://nucleus-io.vercel.app",
+  "results": ["Published an interactive WebGL portfolio with flight, project exploration, and synthesized audio."],
+  "limitations": ["Requires a browser with WebGL2."],
+  "lessons": ["Use interaction and motion to make a portfolio explorable."],
+  "evidence": ["nucleus-readme"],
+  "lastVerified": "2026-10-19",
+  "featured": true,
+  "order": 4,
+  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Migrated current public README and existing portfolio."}
+}

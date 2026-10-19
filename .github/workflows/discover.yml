@@ -1,0 +1,44 @@
+name: Discover evidence and propose facts
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: identity-discovery
+  cancel-in-progress: false
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Scan public evidence and optionally request AI suggestions
+        run: npm run scan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          IDENTITY_AI_API_KEY: ${{ secrets.IDENTITY_AI_API_KEY }}
+          IDENTITY_AI_BASE_URL: ${{ vars.IDENTITY_AI_BASE_URL }}
+          IDENTITY_AI_MODEL: ${{ vars.IDENTITY_AI_MODEL }}
+      - run: npm test && npm run validate
+      - name: Commit proposals on an isolated branch
+        run: |
+          git config user.name 'roy-identity-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -B identity/discovery
+          git add candidates evidence/observations.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Propose evidence-backed identity updates'
+            git push --force-with-lease origin identity/discovery
+          fi
+      - name: Open or update the review PR
+        run: node scripts/open-pr.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}

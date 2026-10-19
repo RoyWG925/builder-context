@@ -1,0 +1,20 @@
+{
+  "id": "taiwan-uni-cp-value",
+  "visibility": "public",
+  "name": "Is my major worth it?",
+  "summary": "Interactive dashboard comparing Taiwan university admission scores with graduate salaries across 1,787 programs, with field-level salary distributions and methodology notes.",
+  "contribution": "NTNU course project authored by Roy Wang, as credited in the public README.",
+  "technologies": ["Python", "Streamlit", "Plotly", "pandas"],
+  "status": "prototype",
+  "period": "2025",
+  "repository": "https://github.com/RoyWG925/taiwan-uni-cp-value",
+  "demo": null,
+  "results": ["Joined admission and field-level salary data and built an interactive exploration interface."],
+  "limitations": ["Salary data are at field level, not individual program outcomes. No public server demo is documented."],
+  "lessons": ["Make data grain and proxy assumptions visible alongside comparisons."],
+  "evidence": ["university-readme"],
+  "lastVerified": "2026-10-19",
+  "featured": true,
+  "order": 3,
+  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Migrated current public README and existing profile."}
+}

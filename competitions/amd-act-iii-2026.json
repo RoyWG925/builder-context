@@ -1,0 +1,16 @@
+{
+  "id": "amd-act-iii-2026",
+  "visibility": "public",
+  "name": "AMD Developer Hackathon ACT III",
+  "track": "Track 4 - Create a New Kind of Experience",
+  "projectId": "viral-town",
+  "status": "project-prepared",
+  "submitted": null,
+  "result": null,
+  "team": null,
+  "period": "2026-10",
+  "summary": "VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.",
+  "evidence": ["viral-readme"],
+  "lastVerified": "2026-10-19",
+  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Public project association only; no inference of submission, acceptance, or award."}
+}

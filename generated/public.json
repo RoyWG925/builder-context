@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "schemaVersion": 1,
+    "visibility": "public",
+    "name": "Roy Wang",
+    "fullName": "Yuyang (Roy) Wang",
+    "nameZh": "王語揚",
+    "github": "RoyWG925",
+    "headline": "AI Product Engineer",
+    "tagline": "Product-minded engineer building AI-powered tools and interactive web apps.",
+    "location": "Taipei, Taiwan",
+    "availability": "Open to Work",
+    "email": "jg971402@gmail.com",
+    "links": {
+      "github": "https://github.com/RoyWG925",
+      "portfolio": "https://roywg925.github.io/portfolio-astro/",
+      "linkedin": "https://www.linkedin.com/in/roywg925/",
+      "context": "https://github.com/RoyWG925/builder-context"
+    },
+    "focus": [
+      "Applied NLP",
+      "Full-Stack Apps",
+      "Interactive UI"
+    ],
+    "about": [
+      "Graduated from National Taiwan Normal University (B.S., Learning Sciences, 2026). My HCI background shapes how I approach the interaction between people and complex systems.",
+      "I build AI-powered tools and interactive web apps, across applied NLP, full-stack product interfaces, and interactive UI.",
+      "I combine Learning Sciences and engineering practice. I care whether the software is useful to a real person, as well as whether a model can produce an answer."
+    ],
+    "education": [
+      {
+        "institution": "National Taiwan Normal University (NTNU)",
+        "degree": "B.S. in Learning Sciences",
+        "period": "2021 - 2026",
+        "evidence": [
+          "portfolio-existing"
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "category": "Applied NLP",
+        "items": [
+          "Python",
+          "PyTorch",
+          "Hugging Face Transformers",
+          "BERT fine-tuning",
+          "pandas",
+          "Jupyter"
+        ]
+      },
+      {
+        "category": "Full-Stack Apps",
+        "items": [
+          "React",
+          "Astro",
+          "Node.js",
+          "Firebase",
+          "Supabase",
+          "Vercel"
+        ]
+      },
+      {
+        "category": "Interactive UI",
+        "items": [
+          "Three.js / WebGL",
+          "GLSL shaders",
+          "Framer Motion",
+          "CSS animation"
+        ]
+      },
+      {
+        "category": "Toolchain",
+        "items": [
+          "Git / GitHub",
+          "Cursor",
+          "Claude Code",
+          "GitHub Copilot",
+          "Godot",
+          "Figma",
+          "Docker"
+        ]
+      }
+    ],
+    "review": {
+      "state": "published-baseline",
+      "basis": "Migrated existing public profile and portfolio; not a new owner attestation.",
+      "date": "2026-10-19",
+      "evidence": [
+        "profile-existing",
+        "portfolio-existing"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "id": "viral-town",
+      "visibility": "public",
+      "name": "VIRAL - One whisper, a living town",
+      "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+      "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "Gemma",
+        "AMD Token Factory"
+      ],
+      "status": "deployed",
+      "period": "2026",
+      "repository": "https://github.com/RoyWG925/viral-town",
+      "demo": "https://viral-town.vercel.app",
+      "results": [
+        "Published a playable experience with validated model actions and an inspectable chain of causes."
+      ],
+      "limitations": [
+        "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
+        "Submission, acceptance, awards, and Roy's precise team contribution are not confirmed."
+      ],
+      "lessons": [
+        "Separate model-generated decisions from deterministic state changes and make failures observable."
+      ],
+      "evidence": [
+        "viral-readme"
+      ],
+      "lastVerified": "2026-10-19",
+      "featured": true,
+      "order": 1,
+      "review": {
+        "state": "published-baseline",
+        "date": "2026-10-19",
+        "basis": "Public repository describes the project; does not attest to individual contribution or competition outcome."
+      }
+    },
+    {
+      "id": "ptt-sentiment-stock-analysis",
+      "visibility": "public",
+      "name": "Market Sentiment x TAIEX",
+      "summary": "Three-person NTNU event study of PTT Stock sentiment and the TAIEX. Fine-tuned multilingual BERT and evaluated sentiment structure around the April 2025 tariff shock.",
+      "contribution": "Roy handled BERT training, coding, crawling, and statistical analysis in a three-person NTNU research team, as described in the existing public portfolio.",
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "Hugging Face Transformers",
+        "BERT",
+        "SQLite"
+      ],
+      "status": "research-completed",
+      "period": "2025",
+      "repository": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis",
+      "demo": null,
+      "results": [
+        "Implemented a text ingestion, labeling, model training, and event-study workflow."
+      ],
+      "limitations": [
+        "The reported 0.683 macro-F1 used a test set overlapping training and tuning. The repository reports 0.580 on a 45-item consensus-labeled holdout.",
+        "This is a single-event, same-day association study; it does not establish market prediction."
+      ],
+      "lessons": [
+        "Separate exploratory scores from held-out evaluation and publish corrections when recomputation changes the conclusion."
+      ],
+      "evidence": [
+        "ptt-readme",
+        "ptt-errata",
+        "portfolio-existing"
+      ],
+      "lastVerified": "2026-10-19",
+      "featured": true,
+      "order": 2,
+      "review": {
+        "state": "published-baseline",
+        "date": "2026-10-19",
+        "basis": "Current public README and corrections supersede historical resume claims."
+      }
+    },
+    {
+      "id": "taiwan-uni-cp-value",
+      "visibility": "public",
+      "name": "Is my major worth it?",
+      "summary": "Interactive dashboard comparing Taiwan university admission scores with graduate salaries across 1,787 programs, with field-level salary distributions and methodology notes.",
+      "contribution": "NTNU course project authored by Roy Wang, as credited in the public README.",
+      "technologies": [
+        "Python",
+        "Streamlit",
+        "Plotly",
+        "pandas"
+      ],
+      "status": "prototype",
+      "period": "2025",
+      "repository": "https://github.com/RoyWG925/taiwan-uni-cp-value",
+      "demo": null,
+      "results": [
+        "Joined admission and field-level salary data and built an interactive exploration interface."
+      ],
+      "limitations": [
+        "Salary data are at field level, not individual program outcomes. No public server demo is documented."
+      ],
+      "lessons": [
+        "Make data grain and proxy assumptions visible alongside comparisons."
+      ],
+      "evidence": [
+        "university-readme"
+      ],
+      "lastVerified": "2026-10-19",
+      "featured": true,
+      "order": 3,
+      "review": {
+        "state": "published-baseline",
+        "date": "2026-10-19",
+        "basis": "Migrated current public README and existing profile."
+      }
+    },
+    {
+      "id": "nucleus-io",
+      "visibility": "public",
+      "name": "NUCLEUS.IO",
+      "summary": "Flyable 3D portfolio built with Three.js, custom GLSL post-processing, procedural audio, and interactive project orbs.",
+      "contribution": "Roy Wang's developer portfolio, as identified in its public README.",
+      "technologies": [
+        "Three.js",
+        "WebGL",
+        "GLSL",
+        "Vite",
+        "Web Audio API"
+      ],
+      "status": "deployed",
+      "period": "2026",
+      "repository": "https://github.com/RoyWG925/nucleus-io",
+      "demo": "https://nucleus-io.vercel.app",
+      "results": [
+        "Published an interactive WebGL portfolio with flight, project exploration, and synthesized audio."
+      ],
+      "limitations": [
+        "Requires a browser with WebGL2."
+      ],
+      "lessons": [
+        "Use interaction and motion to make a portfolio explorable."
+      ],
+      "evidence": [
+        "nucleus-readme"
+      ],
+      "lastVerified": "2026-10-19",
+      "featured": true,
+      "order": 4,
+      "review": {
+        "state": "published-baseline",
+        "date": "2026-10-19",
+        "basis": "Migrated current public README and existing portfolio."
+      }
+    }
+  ],
+  "competitions": [
+    {
+      "id": "amd-act-iii-2026",
+      "visibility": "public",
+      "name": "AMD Developer Hackathon ACT III",
+      "track": "Track 4 - Create a New Kind of Experience",
+      "projectId": "viral-town",
+      "status": "project-prepared",
+      "submitted": null,
+      "result": null,
+      "team": null,
+      "period": "2026-10",
+      "summary": "VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.",
+      "evidence": [
+        "viral-readme"
+      ],
+      "lastVerified": "2026-10-19",
+      "review": {
+        "state": "published-baseline",
+        "date": "2026-10-19",
+        "basis": "Public project association only; no inference of submission, acceptance, or award."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "profile-existing",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/RoyWG925/blob/main/README.md",
+      "kind": "existing-publication",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "portfolio-existing",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/portfolio-astro/blob/main/src/pages/index.astro",
+      "kind": "existing-publication",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "ptt-readme",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/README.md",
+      "kind": "repository",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "ptt-errata",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/ERRATA.md",
+      "kind": "correction",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "university-readme",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/taiwan-uni-cp-value/blob/main/README.md",
+      "kind": "repository",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "nucleus-readme",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/nucleus-io/blob/main/README.md",
+      "kind": "repository",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "viral-readme",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/viral-town/blob/master/README.md",
+      "kind": "repository",
+      "checkedAt": "2026-10-19"
+    }
+  ],
+  "revision": "24ebcc124bdd0ff3a11389f6f9c73e73f220d29fac2371fed3a63eb4fc76b068"
+}

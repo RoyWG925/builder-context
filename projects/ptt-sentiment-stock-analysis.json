@@ -1,0 +1,20 @@
+{
+  "id": "ptt-sentiment-stock-analysis",
+  "visibility": "public",
+  "name": "Market Sentiment x TAIEX",
+  "summary": "Three-person NTNU event study of PTT Stock sentiment and the TAIEX. Fine-tuned multilingual BERT and evaluated sentiment structure around the April 2025 tariff shock.",
+  "contribution": "Roy handled BERT training, coding, crawling, and statistical analysis in a three-person NTNU research team, as described in the existing public portfolio.",
+  "technologies": ["Python", "PyTorch", "Hugging Face Transformers", "BERT", "SQLite"],
+  "status": "research-completed",
+  "period": "2025",
+  "repository": "https://github.com/RoyWG925/ptt-sentiment-stock-analysis",
+  "demo": null,
+  "results": ["Implemented a text ingestion, labeling, model training, and event-study workflow."],
+  "limitations": ["The reported 0.683 macro-F1 used a test set overlapping training and tuning. The repository reports 0.580 on a 45-item consensus-labeled holdout.", "This is a single-event, same-day association study; it does not establish market prediction."],
+  "lessons": ["Separate exploratory scores from held-out evaluation and publish corrections when recomputation changes the conclusion."],
+  "evidence": ["ptt-readme", "ptt-errata", "portfolio-existing"],
+  "lastVerified": "2026-10-19",
+  "featured": true,
+  "order": 2,
+  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Current public README and corrections supersede historical resume claims."}
+}

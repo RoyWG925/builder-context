@@ -1,0 +1,20 @@
+{
+  "id": "viral-town",
+  "visibility": "public",
+  "name": "VIRAL - One whisper, a living town",
+  "summary": "AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.",
+  "contribution": "Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.",
+  "technologies": ["TypeScript", "Next.js", "Gemma", "AMD Token Factory"],
+  "status": "deployed",
+  "period": "2026",
+  "repository": "https://github.com/RoyWG925/viral-town",
+  "demo": "https://viral-town.vercel.app",
+  "results": ["Published a playable experience with validated model actions and an inspectable chain of causes."],
+  "limitations": ["Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.", "Submission, acceptance, awards, and Roy's precise team contribution are not confirmed."],
+  "lessons": ["Separate model-generated decisions from deterministic state changes and make failures observable."],
+  "evidence": ["viral-readme"],
+  "lastVerified": "2026-10-19",
+  "featured": true,
+  "order": 1,
+  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Public repository describes the project; does not attest to individual contribution or competition outcome."}
+}

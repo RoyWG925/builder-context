@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {"id":"profile-existing","visibility":"public","url":"https://github.com/RoyWG925/RoyWG925/blob/main/README.md","kind":"existing-publication","checkedAt":"2026-10-19"},
+    {"id":"portfolio-existing","visibility":"public","url":"https://github.com/RoyWG925/portfolio-astro/blob/main/src/pages/index.astro","kind":"existing-publication","checkedAt":"2026-10-19"},
+    {"id":"ptt-readme","visibility":"public","url":"https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/README.md","kind":"repository","checkedAt":"2026-10-19"},
+    {"id":"ptt-errata","visibility":"public","url":"https://github.com/RoyWG925/ptt-sentiment-stock-analysis/blob/main/ERRATA.md","kind":"correction","checkedAt":"2026-10-19"},
+    {"id":"university-readme","visibility":"public","url":"https://github.com/RoyWG925/taiwan-uni-cp-value/blob/main/README.md","kind":"repository","checkedAt":"2026-10-19"},
+    {"id":"nucleus-readme","visibility":"public","url":"https://github.com/RoyWG925/nucleus-io/blob/main/README.md","kind":"repository","checkedAt":"2026-10-19"},
+    {"id":"viral-readme","visibility":"public","url":"https://github.com/RoyWG925/viral-town/blob/master/README.md","kind":"repository","checkedAt":"2026-10-19"}
+  ]
+}

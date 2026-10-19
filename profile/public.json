@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "visibility": "public",
+  "name": "Roy Wang",
+  "fullName": "Yuyang (Roy) Wang",
+  "nameZh": "王語揚",
+  "github": "RoyWG925",
+  "headline": "AI Product Engineer",
+  "tagline": "Product-minded engineer building AI-powered tools and interactive web apps.",
+  "location": "Taipei, Taiwan",
+  "availability": "Open to Work",
+  "email": "jg971402@gmail.com",
+  "links": {
+    "github": "https://github.com/RoyWG925",
+    "portfolio": "https://roywg925.github.io/portfolio-astro/",
+    "linkedin": "https://www.linkedin.com/in/roywg925/",
+    "context": "https://github.com/RoyWG925/builder-context"
+  },
+  "focus": ["Applied NLP", "Full-Stack Apps", "Interactive UI"],
+  "about": [
+    "Graduated from National Taiwan Normal University (B.S., Learning Sciences, 2026). My HCI background shapes how I approach the interaction between people and complex systems.",
+    "I build AI-powered tools and interactive web apps, across applied NLP, full-stack product interfaces, and interactive UI.",
+    "I combine Learning Sciences and engineering practice. I care whether the software is useful to a real person, as well as whether a model can produce an answer."
+  ],
+  "education": [
+    {"institution": "National Taiwan Normal University (NTNU)", "degree": "B.S. in Learning Sciences", "period": "2021 - 2026", "evidence": ["portfolio-existing"]}
+  ],
+  "skills": [
+    {"category": "Applied NLP", "items": ["Python", "PyTorch", "Hugging Face Transformers", "BERT fine-tuning", "pandas", "Jupyter"]},
+    {"category": "Full-Stack Apps", "items": ["React", "Astro", "Node.js", "Firebase", "Supabase", "Vercel"]},
+    {"category": "Interactive UI", "items": ["Three.js / WebGL", "GLSL shaders", "Framer Motion", "CSS animation"]},
+    {"category": "Toolchain", "items": ["Git / GitHub", "Cursor", "Claude Code", "GitHub Copilot", "Godot", "Figma", "Docker"]}
+  ],
+  "review": {"state": "published-baseline", "basis": "Migrated existing public profile and portfolio; not a new owner attestation.", "date": "2026-10-19", "evidence": ["profile-existing", "portfolio-existing"]}
+}
