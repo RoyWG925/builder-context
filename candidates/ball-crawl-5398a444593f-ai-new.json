@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "ball-crawl",
+    "visibility": "public",
+    "name": "BallCrawl",
+    "summary": "Godot game prototype combining dice-based board movement with a turn-based ball-shooting phase and monster encounters.",
+    "contribution": "Repository ownership verified. Individual contribution and team attribution await Roy’s confirmation.",
+    "technologies": [
+      "Godot 4.6",
+      "GDScript",
+      "Godot 2D physics",
+      "GUT (test files present)"
+    ],
+    "status": "archived-repository",
+    "period": "Date requires owner confirmation",
+    "repository": "https://github.com/RoyWG925/ball-crawl",
+    "demo": null,
+    "results": [
+      "Inspected code implements roll, movement decision, movement, shooting and resolution states, with combined/split dice movement and drag-to-launch balls."
+    ],
+    "limitations": [
+      "Archived prototype; no packaged release, player usage or revenue was verified.",
+      "GUT test files exist, but no test pass count or executed result is claimed.",
+      "Individual authorship, team work, imported assets and intended project status require Roy’s confirmation."
+    ],
+    "lessons": [],
+    "evidence": [
+      "scan-ball-crawl-bf8b11d8cab5"
+    ],
+    "lastVerified": "2026-10-19",
+    "featured": false,
+    "order": 6,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-19"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-ball-crawl-bf8b11d8cab5",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/ball-crawl/tree/bf8b11d8cab550b0162eb3782b4ad622f7354df9",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-19",
+      "commit": "bf8b11d8cab550b0162eb3782b4ad622f7354df9"
+    }
+  ],
+  "baseRecordHash": null,
+  "discovery": {
+    "commit": "bf8b11d8cab550b0162eb3782b4ad622f7354df9",
+    "fingerprint": "5398a444593fe7a358b7ad405ca92e5e374a1470011d814e0f17561ed0089e2c",
+    "engine": "codex-work-evidence-review",
+    "reason": "Include the archived Godot game prototype based on inspected project config and implementation; do not invent release or test outcomes.",
+    "claims": [
+      {
+        "kind": "technology",
+        "path": "game/project.godot",
+        "quote": "config/features=PackedStringArray(\"4.6\", \"GL Compatibility\")"
+      },
+      {
+        "kind": "feature",
+        "path": "game/scripts/turn_manager.gd",
+        "quote": "enum State {\n    ROLL,\n    MOVE_DECISION,\n    MOVING,\n    SHOOT_PHASE,\n    RESOLVE"
+      },
+      {
+        "kind": "feature",
+        "path": "game/scripts/ball.gd",
+        "quote": "extends RigidBody2D"
+      }
+    ],
+    "checks": [],
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending."
+  },
+  "baseCanonicalCommit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
+}
