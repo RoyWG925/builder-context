@@ -41,6 +41,8 @@ Unregister-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Confirm:$false
 
 The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy’s review.
 
+The isolated Codex invocation additionally disables command-execution tools and web search, and sets project-instruction loading to zero bytes. Its required Identity Skill and current context are explicitly supplied in the prompt, reducing accidental inheritance of unrelated personal instructions. These controls do not replace human review or a separate OS account for stronger isolation. Reference: https://developers.openai.com/codex/config-reference
+
 ## Claude Code
 
 Use your existing Claude subscription login (`claude auth login`) and set `engine` to `claude` in config. The adapter verifies OAuth subscription authentication, removes API-key/provider environment overrides, runs with no tools/MCP, structured JSON and no session persistence. It never falls back to paid API billing. Codex is the primary adapter; optional Claude execution requires a working local login and is not claimed tested merely by checking its help flags.

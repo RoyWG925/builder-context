@@ -54,7 +54,7 @@ export async function maintain(args=process.argv.slice(2)){
     const env=agentEnvironment(),timeout=(config.timeoutMinutes??30)*60000;let answer;
     if(config.engine==='codex'){
       const entry=config.codexEntry??join(process.env.APPDATA??join(homedir(),'.local/lib'),'npm/node_modules/@openai/codex/bin/codex.js');
-      await run(process.execPath,[entry,'--ask-for-approval','never','exec','--ignore-user-config','-c','forced_login_method="chatgpt"','--sandbox','read-only','--skip-git-repo-check','--ephemeral','--output-schema',schemaPath,'--output-last-message',outputPath,'--cd',dir,'-'],{input:prompt,cwd:dir,env,timeout});answer=await json(outputPath);
+      await run(process.execPath,[entry,'--ask-for-approval','never','exec','--ignore-user-config','-c','forced_login_method="chatgpt"','-c','features.shell_tool=false','-c','web_search="disabled"','-c','project_doc_max_bytes=0','--sandbox','read-only','--skip-git-repo-check','--ephemeral','--output-schema',schemaPath,'--output-last-message',outputPath,'--cd',dir,'-'],{input:prompt,cwd:dir,env,timeout});answer=await json(outputPath);
     }else if(config.engine==='claude'){
       const command=config.claudeCommand??'claude';
       const auth=JSON.parse(await run(command,['auth','status','--json'],{env}));
