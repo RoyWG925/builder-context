@@ -3,6 +3,7 @@
   "reasoningEffort":"high",
   "stateDirectory":"./local-state",
   "maxRepositories":6,
+  "maxPromptCharacters":600000,
   "timeoutMinutes":30,
   "codexEntry":null,
   "sourcePack":{"maxDocuments":40,"maxCharacters":240000},

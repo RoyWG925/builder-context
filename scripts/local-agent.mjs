@@ -65,7 +65,17 @@ export async function maintain(args=process.argv.slice(2)){
     const explicit=args.includes('--repository')?args[args.indexOf('--repository')+1]:null;
     const repos=(await inventory(ghRequest)).filter(r=>(!explicit||r.name===explicit)&&(!config.repositories?.length||config.repositories.includes(r.name)));
     if(explicit&&!repos.length)throw Error('Requested repository is not eligible/public');
-    const packs=[];for(const repo of repos){const p=await collect(repo,ghRequest,config.sourcePack);p.current=bundle.projects.find(x=>x.repository===repo.html_url)??null;p.analysisKey=hash([p.fingerprint,p.current?hash(p.current):null,config.engine,bundle.revision,contract]);if(state.analysed[p.repository]!==p.analysisKey||args.includes('--force'))packs.push(p);if(packs.length>=(config.maxRepositories??6))break;}
+    const packs=[];let promptCharacters=skill.length+instructions.length+context.length+1000;
+    const maxPromptCharacters=config.maxPromptCharacters??600000;
+    for(const repo of repos){
+      const p=await collect(repo,ghRequest,config.sourcePack);p.current=bundle.projects.find(x=>x.repository===repo.html_url)??null;p.analysisKey=hash([p.fingerprint,p.current?hash(p.current):null,config.engine,bundle.revision,contract]);
+      if(state.analysed[p.repository]!==p.analysisKey||args.includes('--force')){
+        const size=JSON.stringify(p).length;
+        if(promptCharacters+size>maxPromptCharacters){if(packs.length)break;throw Error('One evidence pack exceeds the prompt budget; reduce sourcePack limits before retrying');}
+        packs.push(p);promptCharacters+=size;
+      }
+      if(packs.length>=(config.maxRepositories??6))break;
+    }
     status.canonicalCommit=canonicalCommit;status.revision=bundle.revision;
     if(!packs.length){console.log('No new meaningful source snapshots to analyse.');status.status='unchanged';return;}
     const dir=join(stateDir,new Date().toISOString().replace(/[:.]/g,'-'));await mkdir(dir,{recursive:true});
