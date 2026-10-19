@@ -1,9 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { load, publicBundle, save, esc, md } from './lib.mjs';
+import { load, publicBundle, save, esc, md, hash } from './lib.mjs';
 
 export function render(data, template) {
   const b = publicBundle(data), p = b.profile;
   const projects = b.projects.filter(p=>p.featured);
+  const resumeBullets=x=>[x.summary,...(x.contribution.startsWith('Roy handled')?[x.contribution]:x.results.slice(0,1))];
   const linked = (label,url) => `[${md(label)}](${url})`;
   const head = `<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: ${b.revision} -->\n`;
   const profile = head + `## Hi, I'm ${md(p.name)}\n\n${md(p.tagline)}\n\n### What I build\n${p.focus.map(s=>`- ${md(s)}`).join('\n')}\n\n### Featured work\n${projects.map(x=>`- **${linked(x.name,x.repository)}**${x.demo ? ' · '+linked('demo',x.demo) : ''}: ${md(x.summary)}`).join('\n')}\n\n### Hackathons\n${b.competitions.map(c=>`- ${md(c.name)} · ${md(c.track)}: ${md(c.summary)}`).join('\n')}\n\n### Stack\n${[...new Set(p.skills.flatMap(s=>s.items))].map(md).join(' · ')}\n\n### Contact\n${linked('Portfolio',p.links.portfolio)} · ${linked('LinkedIn',p.links.linkedin)} · ${p.email}\n\nAI agents: read ${linked('AI_CONTEXT.md',p.links.context+'/blob/main/AI_CONTEXT.md')} for verified facts, attribution limits and evidence.\n`;
@@ -15,14 +16,23 @@ export function render(data, template) {
 <section><h2>Projects &amp; Research</h2>${projects.map(x=>`<div class="entry"><div class="entry-header"><a class="entry-title" href="${esc(x.repository)}">${esc(x.name)}</a><span class="entry-date">${esc(x.period)}</span></div><div class="entry-sub">${esc(x.technologies.join(' / '))}</div><ul><li>${esc(x.summary)}</li><li>${esc(x.contribution)}</li></ul></div>`).join('')}</section>
 <section><h2>Technical Skills</h2><div class="skills-grid">${p.skills.map(s=>`<span class="skill-cat">${esc(s.category)}</span><span class="skill-val">${esc(s.items.join(', '))}</span>`).join('')}</div></section>
 <p class="provenance">Evidence and limitations: <a href="${esc(p.links.context)}">github.com/${esc(p.github)}/builder-context</a> · ${esc(b.revision.slice(0,12))}</p>`;
-  const html = template.replace('{{TITLE}}',`${esc(p.name)} - Resume`).replace('{{CONTENT}}',body);
+  let polishedBodyIndex=0;
+  const polishedBody=body.replace(/<ul><li>[\s\S]*?<\/li><\/ul>/g,()=>`<ul>${resumeBullets(projects[polishedBodyIndex++]).map(v=>`<li>${esc(v)}</li>`).join('')}</ul>`);
+  const hackathons=`<section><h2>Hackathons</h2>${b.competitions.map(c=>`<p>${esc(c.name)} - ${c.submitted?'Submitted; '+(c.result?esc(c.result):'results pending.'):'Submission unconfirmed.'}</p>`).join('')}</section>`;
+  const html = template.replace('{{TITLE}}',`${esc(p.name)} - Resume`).replace('{{CONTENT}}',polishedBody.replace('<section><h2>Technical Skills',hackathons+'<section><h2>Technical Skills')).replace('</head>',`<meta name="identity-revision" content="${b.revision}"></head>`);
   const linkedin = head + `# LinkedIn update drafts - manual publishing only\n\nStatus: DRAFT. Review wording before pasting. No LinkedIn API or browser automation exists in this project.\n\n## Headline\n${p.headline} | ${p.focus.join(' | ')}\n\n## About\n${p.about.join('\n\n')}\n\n## Featured projects\n${projects.map(x=>`### ${x.name}\n${x.summary}\n${x.repository}${x.demo?'\nDemo: '+x.demo:''}\nAttribution: ${x.contribution}\nKeep these qualifiers: ${x.limitations.join(' ')}\nEvidence: ${evidenceLinks(x)}`).join('\n\n')}\n\n## Post draft\nI have been building AI-powered tools and interactive experiences, and I now keep the public evidence for my work in one place.\n\nRecent project: ${projects[0]?.name??''}. ${projects[0]?.summary??''}\n\nProject details and limitations: ${projects[0]?.repository??p.links.portfolio}\nPortfolio: ${p.links.portfolio}\n\nDo not add a submission, award, job title, team role, benchmark, or user count without owner-confirmed evidence.\n`;
-  return new Map([
+  const outputs = new Map([
     ['generated/public.json', JSON.stringify(b,null,2)+'\n'],
     ['generated/profile-readme.md',profile], ['AI_CONTEXT.md',ai],
     ['generated/resume.md',resumeMd], ['generated/resume.html',html], ['generated/linkedin.md',linkedin],
     ['generated/applications.json', JSON.stringify({schemaVersion:1,revision:b.revision,profile:p,projects:b.projects,competitions:b.competitions,policy:'Draft application material only; unknown contribution and outcomes must be confirmed.'},null,2)+'\n']
   ]);
+  const intros=head+'# Introductions by audience\n\n'+b.personas.map(x=>`## ${x.label}\n${x.introduction}\n\nEmphasis: ${x.emphasis.join('; ')}\n\nSelect only relevant projects from the current public bundle. Project and team attribution limits still apply.\n`).join('\n');
+  outputs.set('generated/introductions.md',intros);
+  outputs.set('generated/introductions.json',JSON.stringify({revision:b.revision,personas:b.personas},null,2)+'\n');
+  outputs.set('AI_CONTEXT.md',ai.replace('They are different evidence levels.','owner-attested = a minimal explicit statement supplied by Roy, with a public statement receipt. These are different evidence levels.').replace('candidates/<id>.json','candidates/<project>-<fingerprint>-<engine>-<base>.json')+'\n'+intros);
+  outputs.set('generated/export-manifest.json',JSON.stringify({schemaVersion:1,revision:b.revision,files:Object.fromEntries([...outputs].map(([path,body])=>[path,hash(body)]))},null,2)+'\n');
+  return outputs;
 }
 export async function generate(root='.',check=false) {
   const outputs = render(await load(root),await readFile(`${root}/templates/resume.html`,'utf8'));

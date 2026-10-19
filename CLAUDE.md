@@ -1,0 +1,1 @@
+Read AGENTS.md, skills/roy-identity/SKILL.md and the latest immutable AI_CONTEXT.md before identity/application work. Use the same source and candidate protocol as Codex. After a meaningful project milestone, propose evidence-backed updates with the local runner. Never merge fact PRs, infer awards or disclose private intake. LinkedIn remains draft-only.

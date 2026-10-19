@@ -1,17 +1,17 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
 # LinkedIn update drafts - manual publishing only
 
 Status: DRAFT. Review wording before pasting. No LinkedIn API or browser automation exists in this project.
 
 ## Headline
-AI Product Engineer | Applied NLP | Full-Stack Apps | Interactive UI
+AI Engineer & Product Builder | AI-native Consumer Products | AI Agent Engineering | Creative Technology | Interactive Experiences
 
 ## About
 Graduated from National Taiwan Normal University (B.S., Learning Sciences, 2026). My HCI background shapes how I approach the interaction between people and complex systems.
 
-I build AI-powered tools and interactive web apps, across applied NLP, full-stack product interfaces, and interactive UI.
+I build AI-powered tools and interactive experiences across agent systems, full-stack interfaces, creative technology and applied NLP research.
 
-I combine Learning Sciences and engineering practice. I care whether the software is useful to a real person, as well as whether a model can produce an answer.
+My direction is AI-native consumer products: I want to build products people use, return to, and choose to pay for. This is a product goal, not a claim of current users or revenue.
 
 ## Featured projects
 ### VIRAL - One whisper, a living town
@@ -19,7 +19,7 @@ AI-driven town simulation: whisper a sentence to a resident and watch its conseq
 https://github.com/RoyWG925/viral-town
 Demo: https://viral-town.vercel.app
 Attribution: Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.
-Keep these qualifiers: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Submission, acceptance, awards, and Roy's precise team contribution are not confirmed.
+Keep these qualifiers: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed.
 Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
 
 ### Market Sentiment x TAIEX

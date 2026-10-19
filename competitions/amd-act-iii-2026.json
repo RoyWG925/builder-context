@@ -4,13 +4,13 @@
   "name": "AMD Developer Hackathon ACT III",
   "track": "Track 4 - Create a New Kind of Experience",
   "projectId": "viral-town",
-  "status": "project-prepared",
-  "submitted": null,
+  "status": "submitted",
+  "submitted": true,
   "result": null,
   "team": null,
   "period": "2026-10",
-  "summary": "VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.",
-  "evidence": ["viral-readme"],
+  "summary": "VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.",
+  "evidence": ["viral-readme", "roy-viral-submitted"],
   "lastVerified": "2026-10-19",
-  "review": {"state": "published-baseline", "date": "2026-10-19", "basis": "Public project association only; no inference of submission, acceptance, or award."}
+  "review": {"state": "owner-attested", "by":"RoyWG925", "date": "2026-10-19", "basis": "Explicit owner instruction, recorded in evidence/owner-statements.json; results pending.", "evidence":["roy-viral-submitted"]}
 }

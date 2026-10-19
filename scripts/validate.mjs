@@ -1,5 +1,6 @@
-import {load,validate,json,validateProject,validateCompetition} from './lib.mjs';
+import {load,validate,json,validateProject,validateCompetition,hash} from './lib.mjs';
 import {readdir} from 'node:fs/promises';
+import {proposalKey} from './proposals.mjs';
 const data = validate(await load());
 for(const f of (await readdir('candidates')).filter(f=>f.endsWith('.json'))) {
   const c=await json(`candidates/${f}`);
@@ -7,6 +8,8 @@ for(const f of (await readdir('candidates')).filter(f=>f.endsWith('.json'))) {
   const ids=new Set([...data.evidence,...c.sources].map(e=>e.id));
   if(c.kind==='project')validateProject(c.record,ids,true);
   else validateCompetition(c.record,ids,new Set(data.projects.map(p=>p.id)),true);
-  if(c.record.id+'.json'!==f) throw Error('Candidate filename/id mismatch');
+  if(c.schemaVersion!==2||proposalKey(c)+'.json'!==f) throw Error('Legacy or mismatched candidate; refresh using the current collector');
+  const prior=(c.kind==='project'?data.projects:data.competitions).find(p=>p.id===c.record.id);
+  if((prior?hash(prior):null)!==c.baseRecordHash)throw Error(`Stale candidate: ${f}. Reanalyse instead of overwriting canonical facts.`);
 }
 console.log(`Validated public profile, ${data.projects.length} projects, ${data.competitions.length} competition records and candidate boundaries.`);

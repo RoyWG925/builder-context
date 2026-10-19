@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "revision": "35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c",
+  "files": {
+    "generated/public.json": "eeb97aa7a861f80a5dd761fc4ed0cb30f7ff83ed8c85074c6eb77bd10c762ec1",
+    "generated/profile-readme.md": "3a8452c408b868d211e9615fe32a24fa93bb3d40fb443804b75aee17cebd1a5c",
+    "AI_CONTEXT.md": "35c641c02e3a111484350d1381865213364406ca2c43863197c1a1db8be209cd",
+    "generated/resume.md": "df260c81a19386530e867c26606833a7d3233370e3e1bd45a842c036ab9e47c5",
+    "generated/resume.html": "f965a9f7a5dfe4c94c4efd27b0ba68309309e5f56daaf0ba5a2580ba4130be82",
+    "generated/linkedin.md": "c94a20bd2db18c549c4337fc285c35490bc76b9883d3c99e2acac46f9f9c8cb9",
+    "generated/applications.json": "1d5cd51b29b19d6002aff2daef07a274d8e917da5c816499cb0b658d2ad37bff",
+    "generated/introductions.md": "6465876733c28a9bd815d315649e73da6f9eedfde60dc0020efac053f96803f1",
+    "generated/introductions.json": "134987e2eb765f9e04616e2b5f194c478f50dd362b6f20cd7edafbad1281db37"
+  }
+}

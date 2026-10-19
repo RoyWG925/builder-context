@@ -4,10 +4,10 @@ import { createHash } from 'node:crypto';
 
 export const OWNER = 'RoyWG925';
 export const REPO = `${OWNER}/builder-context`;
-export const PUBLIC_STATES = new Set(['published-baseline', 'owner-confirmed']);
+export const PUBLIC_STATES = new Set(['published-baseline', 'owner-confirmed', 'owner-attested']);
 export const ID = /^[a-z0-9][a-z0-9-]{0,95}$/;
 export const hash = value => createHash('sha256').update(typeof value === 'string' ? value : JSON.stringify(value)).digest('hex');
-export const json = path => readFile(path, 'utf8').then(JSON.parse);
+export const json = path => readFile(path, 'utf8').then(s=>JSON.parse(s.replace(/^\uFEFF/,'')));
 export async function save(path, value) {
   await mkdir(join(path, '..'), { recursive: true });
   await writeFile(path, typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n');
@@ -16,10 +16,10 @@ export async function records(root, dir) {
   return Promise.all((await readdir(join(root, dir))).filter(f => f.endsWith('.json')).sort().map(f => json(join(root, dir, f))));
 }
 export async function load(root = '.') {
-  const [profile, projects, competitions, evidence] = await Promise.all([
-    json(join(root, 'profile/public.json')), records(root, 'projects'), records(root, 'competitions'), json(join(root, 'evidence/sources.json'))
+  const [profile, projects, competitions, evidence, personas] = await Promise.all([
+    json(join(root, 'profile/public.json')), records(root, 'projects'), records(root, 'competitions'), json(join(root, 'evidence/sources.json')), json(join(root, 'profile/personas.json')).catch(e=>{if(e.code==='ENOENT')return [];throw e;})
   ]);
-  return { schemaVersion: 1, profile, projects, competitions, evidence: evidence.sources };
+  return { schemaVersion: 1, profile, projects, competitions, evidence: evidence.sources, personas };
 }
 function assert(test, message) { if (!test) throw new Error(message); }
 function text(value, name, max = 5000) {
@@ -44,6 +44,10 @@ export function validateReview(review, allowProposed = false) {
     assert(review.by === OWNER && Number.isInteger(review.pr) && review.pr > 0 && /^[a-f0-9]{40}$/.test(review.mergeCommit), 'Owner confirmation requires PR and merge commit');
   }
   if (review.state === 'published-baseline') text(review.basis, 'publication basis');
+  if (review.state === 'owner-attested') {
+    assert(review.by===OWNER && Array.isArray(review.evidence) && review.evidence.length>0, 'Owner attestation requires a public statement source');
+    text(review.basis, 'attestation basis');
+  }
 }
 export function validateProject(p, evidenceIds, allowProposed = false) {
   assert(p && ID.test(p.id), 'Invalid project id');
@@ -68,8 +72,9 @@ export function validateCompetition(c,evidenceIds,projectIds,allowProposed=false
   assert(c.result===null||typeof c.result==='string','Invalid result');
   assert(c.team===null||typeof c.team==='string','Invalid team');
   assert(c.evidence.length&&c.evidence.every(id=>evidenceIds.has(id)),'Missing competition evidence');
-  if(!allowProposed && ['submitted','accepted','completed','awarded'].includes(c.status))assert(c.submitted===true&&c.review.state==='owner-confirmed','Competition outcome requires owner confirmation');
-  if(!allowProposed && c.result!==null)assert(c.review.state==='owner-confirmed','Unconfirmed competition result');
+  if(!allowProposed && ['submitted','accepted','completed','awarded'].includes(c.status))assert(c.submitted===true&&['owner-confirmed','owner-attested'].includes(c.review.state),'Competition outcome requires owner confirmation');
+  if(!allowProposed && c.result!==null)assert(['owner-confirmed','owner-attested'].includes(c.review.state),'Unconfirmed competition result');
+  if(c.status==='awarded')assert(typeof c.result==='string'&&c.result.trim().length>0,'Award requires a stated result');
   validateReview(c.review,allowProposed);
 }
 export function validate(data) {
@@ -92,6 +97,11 @@ export function validate(data) {
     safeUrl(e.url); ids.add(e.id);
   }
   p.education.forEach(e=>{keys(e,['institution','degree','period','evidence'],'education');text(e.institution,'institution');text(e.degree,'degree');text(e.period,'period');assert(e.evidence.length && e.evidence.every(id=>ids.has(id)),'Missing education evidence');});
+  for(const record of [p,...projects,...competitions])if(record.review.state==='owner-attested')assert(record.review.evidence.every(id=>evidence.some(e=>e.id===id&&e.kind==='owner-attestation')),'Missing owner attestation evidence');
+  for(const persona of data.personas??[]) {
+    keys(persona,['id','label','introduction','emphasis'],'persona');assert(ID.test(persona.id),'Invalid persona id');
+    text(persona.label,'persona label');text(persona.introduction,'persona introduction');strings(persona.emphasis,'persona emphasis');
+  }
   const pids = new Set();
   projects.forEach(p=>{assert(!pids.has(p.id),'Duplicate project');pids.add(p.id);validateProject(p,ids);});
   const cids = new Set();
@@ -100,8 +110,6 @@ export function validate(data) {
     assert(ID.test(c.id) && !cids.has(c.id) && c.visibility==='public' && pids.has(c.projectId),'Invalid competition');cids.add(c.id);
     assert(['project-prepared','submitted','accepted','completed','awarded'].includes(c.status),'Invalid competition status');
     assert(c.evidence.length && c.evidence.every(id=>ids.has(id)),'Missing competition evidence');
-    if(['submitted','accepted','completed','awarded'].includes(c.status)) assert(c.submitted===true && c.review.state==='owner-confirmed','Competition outcome requires owner confirmation');
-    if(c.result!==null) assert(c.review.state==='owner-confirmed','Unconfirmed competition result');
     validateReview(c.review);
   });
   return data;
@@ -113,7 +121,7 @@ export function publicBundle(data) {
   const clean = {
     schemaVersion: 1, profile: data.profile,
     projects: data.projects.filter(publishable).sort((a,b)=>a.order-b.order),
-    competitions: data.competitions.filter(publishable), evidence: data.evidence
+    competitions: data.competitions.filter(publishable), evidence: data.evidence, personas: data.personas??[]
   };
   return { ...clean, revision: hash(clean) };
 }

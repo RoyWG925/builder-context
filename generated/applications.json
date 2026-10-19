@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab",
+  "revision": "35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c",
   "profile": {
     "schemaVersion": 1,
     "visibility": "public",
@@ -8,8 +8,8 @@
     "fullName": "Yuyang (Roy) Wang",
     "nameZh": "王語揚",
     "github": "RoyWG925",
-    "headline": "AI Product Engineer",
-    "tagline": "Product-minded engineer building AI-powered tools and interactive web apps.",
+    "headline": "AI Engineer & Product Builder",
+    "tagline": "Building AI-native consumer products, agents and interactive experiences.",
     "location": "Taipei, Taiwan",
     "availability": "Open to Work",
     "email": "jg971402@gmail.com",
@@ -20,14 +20,15 @@
       "context": "https://github.com/RoyWG925/builder-context"
     },
     "focus": [
-      "Applied NLP",
-      "Full-Stack Apps",
-      "Interactive UI"
+      "AI-native Consumer Products",
+      "AI Agent Engineering",
+      "Creative Technology",
+      "Interactive Experiences"
     ],
     "about": [
       "Graduated from National Taiwan Normal University (B.S., Learning Sciences, 2026). My HCI background shapes how I approach the interaction between people and complex systems.",
-      "I build AI-powered tools and interactive web apps, across applied NLP, full-stack product interfaces, and interactive UI.",
-      "I combine Learning Sciences and engineering practice. I care whether the software is useful to a real person, as well as whether a model can produce an answer."
+      "I build AI-powered tools and interactive experiences across agent systems, full-stack interfaces, creative technology and applied NLP research.",
+      "My direction is AI-native consumer products: I want to build products people use, return to, and choose to pay for. This is a product goal, not a claim of current users or revenue."
     ],
     "education": [
       {
@@ -116,7 +117,7 @@
       ],
       "limitations": [
         "Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.",
-        "Submission, acceptance, awards, and Roy's precise team contribution are not confirmed."
+        "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed."
       ],
       "lessons": [
         "Separate model-generated decisions from deterministic state changes and make failures observable."
@@ -257,20 +258,25 @@
       "name": "AMD Developer Hackathon ACT III",
       "track": "Track 4 - Create a New Kind of Experience",
       "projectId": "viral-town",
-      "status": "project-prepared",
-      "submitted": null,
+      "status": "submitted",
+      "submitted": true,
       "result": null,
       "team": null,
       "period": "2026-10",
-      "summary": "VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.",
+      "summary": "VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.",
       "evidence": [
-        "viral-readme"
+        "viral-readme",
+        "roy-viral-submitted"
       ],
       "lastVerified": "2026-10-19",
       "review": {
-        "state": "published-baseline",
+        "state": "owner-attested",
+        "by": "RoyWG925",
         "date": "2026-10-19",
-        "basis": "Public project association only; no inference of submission, acceptance, or award."
+        "basis": "Explicit owner instruction, recorded in evidence/owner-statements.json; results pending.",
+        "evidence": [
+          "roy-viral-submitted"
+        ]
       }
     }
   ],

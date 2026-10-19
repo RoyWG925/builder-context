@@ -1,30 +1,30 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
 # Roy Identity OS - shared agent context
 
 Source: https://github.com/RoyWG925/builder-context
-Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab
+Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c
 
 ## Read this first
 - Public canonical facts live in profile/, projects/, competitions/, and evidence/.
-- published-baseline = migrated existing public material; owner-confirmed = Roy merged a fact proposal. They are different evidence levels.
+- published-baseline = migrated existing public material; owner-confirmed = Roy merged a fact proposal. owner-attested = a minimal explicit statement supplied by Roy, with a public statement receipt. These are different evidence levels.
 - Never infer employment, proficiency, individual contribution, submission, acceptance, awards, production usage, or business results from repository ownership.
 - Unknown means unknown. Keep limitations attached to numbers and research conclusions.
 - Private material belongs in the separate private repository. Do not quote, copy, or link private repository names into public proposals.
-- Propose new project facts through candidates/<id>.json in a PR. Roy reviews and merges. Only an owner merge can promote those candidates.
+- Propose new project facts through candidates/<project>-<fingerprint>-<engine>-<base>.json in a PR. Roy reviews and merges. Only an owner merge can promote those candidates.
 - Agents must never merge fact-candidate PRs, even when authenticated as RoyWG925. The owner must confirm personally.
 - LinkedIn outputs are drafts. No publishing, messaging, scraping, browser actions, or account mutation is authorized by this file.
 
 ## Profile
 Yuyang (Roy) Wang (王語揚)
-AI Product Engineer
-Product-minded engineer building AI-powered tools and interactive web apps.
+AI Engineer & Product Builder
+Building AI-native consumer products, agents and interactive experiences.
 Taipei, Taiwan; Open to Work.
 
 Graduated from National Taiwan Normal University (B.S., Learning Sciences, 2026). My HCI background shapes how I approach the interaction between people and complex systems.
 
-I build AI-powered tools and interactive web apps, across applied NLP, full-stack product interfaces, and interactive UI.
+I build AI-powered tools and interactive experiences across agent systems, full-stack interfaces, creative technology and applied NLP research.
 
-I combine Learning Sciences and engineering practice. I care whether the software is useful to a real person, as well as whether a model can produce an answer.
+My direction is AI-native consumer products: I want to build products people use, return to, and choose to pay for. This is a product goal, not a claim of current users or revenue.
 
 ## Projects
 ### VIRAL - One whisper, a living town
@@ -33,7 +33,7 @@ AI-driven town simulation: whisper a sentence to a resident and watch its conseq
 Contribution: Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.
 Technology: TypeScript, Next.js, Gemma, AMD Token Factory
 Results: Published a playable experience with validated model actions and an inspectable chain of causes.
-Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Submission, acceptance, awards, and Roy's precise team contribution are not confirmed.
+Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed.
 Lessons: Separate model-generated decisions from deterministic state changes and make failures observable.
 Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
 
@@ -68,8 +68,8 @@ Lessons: Use interaction and motion to make a portfolio explorable.
 Evidence: [nucleus-readme](https://github.com/RoyWG925/nucleus-io/blob/072dae5886fef81107f1dc1e6b31f63b527140bc/README.md)
 
 ## Competitions
-- AMD Developer Hackathon ACT III, Track 4 - Create a New Kind of Experience, 2026-10. Status: project-prepared. Submitted: unknown. Result: unknown. VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.
-  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md)
+- AMD Developer Hackathon ACT III, Track 4 - Create a New Kind of Experience, 2026-10. Status: submitted. Submitted: true. Result: unknown. VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.
+  Evidence: [viral-readme](https://github.com/RoyWG925/viral-town/blob/cbab86c5b978cfa522cf2c3307a8bad236e2db49/README.md) · [roy-viral-submitted](https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json)
 
 ## Skills already published
 Applied NLP: Python, PyTorch, Hugging Face Transformers, BERT fine-tuning, pandas, Jupyter
@@ -79,3 +79,34 @@ Toolchain: Git / GitHub, Cursor, Claude Code, GitHub Copilot, Godot, Figma, Dock
 
 ## Education
 National Taiwan Normal University (NTNU); B.S. in Learning Sciences; 2021 - 2026
+
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
+# Introductions by audience
+
+## AI Engineer / Full-stack Engineer
+I am Roy Wang, an AI engineer and product builder with a Learning Sciences background. My public projects span model-driven interactive systems, full-stack interfaces and NLP research. I focus on making model behavior observable and connecting it to useful product experiences.
+
+Emphasis: VIRAL: validated model decisions and deterministic simulation; Evidence and limits of NLP evaluation; Full-stack product interfaces
+
+Select only relevant projects from the current public bundle. Project and team attribution limits still apply.
+
+## AI Product Builder / Solo Founder direction
+I build AI-powered products and interactive experiences, from a living town simulation to web tools. I am pursuing AI-native consumer products and want to learn from real usage, retention and willingness to pay. Solo founder is a direction; current employment, commercial traction and sole ownership are not asserted.
+
+Emphasis: Product interaction and useful behavior; Shipping and learning from feedback; No unsupported user, retention or revenue claims
+
+Select only relevant projects from the current public bundle. Project and team attribution limits still apply.
+
+## Creative Technologist
+I work where AI behavior and interactive interfaces meet. Projects such as VIRAL and Nucleus.io explore how people can experience complex systems through responsive, playful interfaces. My Learning Sciences background informs how I think about interaction and understanding.
+
+Emphasis: VIRAL: emergent narrative and visible causality; Nucleus.io: interactive interface; Game prototypes after ownership and feature review
+
+Select only relevant projects from the current public bundle. Project and team attribution limits still apply.
+
+## Hackathon Applications
+I am Roy Wang, an AI product builder interested in agent systems and new interactive experiences. VIRAL combines model-generated character decisions with deterministic simulation. I have completed and submitted VIRAL to AMD Developer Hackathon ACT III; results are pending, according to my statement on 2026-10-19.
+
+Emphasis: Working prototype and traceable technical evidence; Individual and team contribution must be confirmed per application; Submission is not acceptance or an award
+
+Select only relevant projects from the current public bundle. Project and team attribution limits still apply.

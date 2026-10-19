@@ -1,6 +1,8 @@
 {
   "schemaVersion": 1,
   "sources": [
+    {"id":"roy-phase2-direction","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":null},
+    {"id":"roy-viral-submitted","visibility":"public","url":"https://github.com/RoyWG925/builder-context/blob/main/evidence/owner-statements.json","kind":"owner-attestation","checkedAt":"2026-10-19","commit":null},
     {
       "id": "profile-existing",
       "visibility": "public",

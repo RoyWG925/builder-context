@@ -1,41 +1,30 @@
 # Operations
 
-## Published source and consumers
+Public source: `RoyWG925/builder-context` main. Cloud evidence scan: daily 01:17 UTC / 09:17 Taipei and workflow_dispatch. Local subscription analysis: weekly, independently configured on Windows. Profile sync: hourly minute 35. Astro deployment: hourly minute 45, pushes and manual runs. No model secret is used.
 
-- Source: RoyWG925/builder-context, main.
-- Profile consumer: RoyWG925/RoyWG925, `Sync Roy Identity OS` Action at minute 35 every hour.
-- Portfolio consumer: RoyWG925/portfolio-astro, `Deploy to GitHub Pages` Action at minute 45 every hour, on push, and manually.
-- Discovery: 01:17 UTC / 09:17 Asia/Taipei every day, or manually.
-- Confirmation: only a candidate PR merged by RoyWG925. Other users cannot trigger confirmation by changing a label or by writing a comment.
+After Roy merges a candidate PR personally, the confirmation Action validates source visibility, current canonical base hash and provenance, promotes the changed candidate only, writes `receipts/`, regenerates exports and pushes a fast-forward commit. A bot or outsider merge does not confirm facts. Never merge a fact PR through an agent logged in as Roy.
 
-Consumers first resolve main to a commit SHA and fetch the generated bundle at that SHA. The portfolio verifies the bundle content hash before changing files. Downloaded HTML, JSON and README are data, not downloaded executable code.
+Proposals have independent branches keyed by project, stable source fingerprint, engine and canonical base hash. An open PR for one project does not stop another project or later source snapshot. All PR states are checked to avoid reproposing an accepted/rejected snapshot. Cloud evidence and local AI analysis can have separate proposals; approving either makes conflicting proposals stale. Reanalyse stale candidates; never force old facts over newer owner-confirmed data. The legacy aggregate PR #1 must not be merged after phase 2.
 
-## AI setup
+Consumers resolve canonical main to one commit, download exports at that SHA and verify SHA256 manifest plus public states. A source docs-only commit can be newer than a deployed receipt without content drift: compare **revision**, then use the receipt’s immutable commit to reproduce the exact artifacts. Astro no longer commits generated snapshots. To build offline, first perform a valid sync; any tampered/missing generated file stops the build.
 
-GitHub Models was retired on 2026-07-30; this project does not call its retired endpoint.
+Manual cloud runs are available at:
 
-Set `IDENTITY_AI_API_KEY` as an Actions repository secret. Optionally set `IDENTITY_AI_BASE_URL` and `IDENTITY_AI_MODEL` repository variables for an OpenAI-compatible Chat Completions provider. Default endpoint is https://api.openai.com/v1. Do not place API keys in JSON, issues, prompts, logs or git. AI input contains only public repository evidence.
+- https://github.com/RoyWG925/builder-context/actions/workflows/discover.yml
+- https://github.com/RoyWG925/RoyWG925/actions/workflows/sync-identity.yml
+- https://github.com/RoyWG925/portfolio-astro/actions/workflows/deploy.yml
 
-Without this secret, evidence discovery, review PRs, confirmation, profile synchronization and deployment still run. PRs and Action logs explicitly say `evidence-only`. This is degraded mode; it is not represented as an AI review. Provider failures also fall back visibly to evidence-only proposals.
-
-Personal repositories cannot rely on the organization-only Copilot GITHUB_TOKEN billing flow. An existing consumer ChatGPT subscription is not an API credential. Configure the provider directly in GitHub's secret UI; do not paste a key into a chat or a PR.
-
-## First-run settings
-
-Enable Actions and **Allow GitHub Actions to create and approve pull requests** for builder-context. This permits creation, but the system never automatically approves or merges PRs. Keep main and canonical JSON changes under owner review; CODEOWNERS alone is not branch protection.
-
-The portfolio uses the existing GitHub Pages source and project base path. The old design, physics, portals, X-ray and stress-test controls remain in the existing Astro components.
-
-## Common recovery
-
-| Symptom | Check |
+| Symptom | Recovery |
 | --- | --- |
-| No AI wording in proposals | Configure the provider secret; inspect the explicit AI status in the run |
-| PR creation returns 403 | Enable the repository Actions PR creation setting |
-| Consumers show older content | Run source validation and the consumer's manual sync/deploy Action; schedules can be delayed by GitHub |
-| Changed input but stale generated files | Run `npm run generate`, commit canonical data and outputs together |
-| Confirmation rejected | Verify the actual merger was RoyWG925, not an auto-merge bot; inspect canonical source and candidate evidence |
-| Stale discovery branch | Close or finish the current review PR before rerunning; proposals are held together on identity/discovery |
-| Private detail found in a public proposal | Do not merge. Remove it and inspect the source; a public fact must be deliberately curated first |
+| Pending PR | Review that project; other snapshots continue independently |
+| Stale candidate | Reanalyse against current canonical record; do not remove base-hash guard |
+| PR creation 403 | Check Actions PR creation permission; no approval/merge automation is needed |
+| GitHub CLI auth error | Run `gh auth login -h github.com` locally as RoyWG925 |
+| Codex cannot start | Use normal local user environment; inspect CLI version/config and subscription login |
+| Generated drift | Run `npm run generate`; commit source and exports together |
+| Deployment shows old revision | Check source validation, consumer run conclusion and live `identity-build.json`; rerun sync/deploy |
+| Hash mismatch | Stop; fetch a single immutable revision again, never silently use stale data |
+| Force/deletion rules not enabled | Complete owner reauthentication and follow SECURITY.md |
+| Private evidence | Keep it private; obtain explicit approval for a selected public summary |
 
-Private data are maintained in a separate private repository with no public publishing workflow. No public job has credentials to fetch it.
+The application/LinkedIn outputs are drafts. No automatic submissions, messages or posts exist. Public scans do not run untrusted project tests; independently rerun project tests only in an isolated environment, without live model calls or service credentials.

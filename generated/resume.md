@@ -1,6 +1,6 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
 # Yuyang (Roy) Wang
-AI Product Engineer
+AI Engineer & Product Builder
 
 jg971402@gmail.com · https://github.com/RoyWG925 · https://roywg925.github.io/portfolio-astro/
 
@@ -13,7 +13,7 @@ https://github.com/RoyWG925/viral-town
 AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.
 Public project in RoyWG925's account. Individual versus team ownership of specific components remains unconfirmed.
 - Published a playable experience with validated model actions and an inspectable chain of causes.
-Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Submission, acceptance, awards, and Roy's precise team contribution are not confirmed.
+Limitations: Live runs depend on model latency. Entertainment claims have not been validated with human playtesters. Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed.
 
 ### Market Sentiment x TAIEX (2025)
 https://github.com/RoyWG925/ptt-sentiment-stock-analysis

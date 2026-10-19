@@ -8,3 +8,5 @@ tmp/
 *.log
 generated/*.pdf
 generated/*.png
+local/config.json
+local/local-state/

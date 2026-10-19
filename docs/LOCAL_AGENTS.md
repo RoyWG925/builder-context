@@ -1,0 +1,58 @@
+# Local subscription maintenance
+
+Cloud Actions monitor public source, validate, propose evidence PRs and publish approved facts without a model API or an online PC. Weekly local Codex performs deeper implementation analysis using the existing ChatGPT subscription. Claude Code is an optional subscription adapter. No API key or paid service is provisioned. Subscription quotas still apply.
+
+## Windows setup
+
+Requirements: Windows PowerShell 5.1+, Node 24, Git, GitHub CLI and Codex CLI. Sign in interactively yourself:
+
+```powershell
+gh auth login -h github.com
+gh auth status -h github.com
+codex login
+```
+
+Choose ChatGPT login, not an API key. Confirm `gh api user --jq .login` is `RoyWG925`. If your older Codex CLI rejects `model_reasoning_effort = "ultra"`, update Codex from the official npm package or change that setting yourself to a level your CLI supports. The isolated maintenance invocation uses `--ignore-user-config` and forces ChatGPT authentication; it does not edit global config or copy authentication tokens.
+
+From a checkout of this repository:
+
+```powershell
+.\local\Install-IdentityMaintenance.ps1 -RegisterWeeklyTask -InstallAgentSkill
+```
+
+Default installation: `%LOCALAPPDATA%\RoyIdentityOS\builder-context`. The weekly current-user task runs Sunday 09:30 **Taipei Standard Time**, at limited privilege, only with the user logged in. `StartWhenAvailable` catches a missed run when possible; it is not a daemon and cannot run while the computer is off. Cloud monitoring and hourly publishing continue independently. No password is stored. Review the task with `Get-ScheduledTask -TaskName 'Roy Identity OS Weekly'` and `Get-ScheduledTaskInfo`.
+
+Manual execution from the installed checkout:
+
+```powershell
+# Analyse and save candidates locally; no GitHub writes
+.\local\Invoke-IdentityMaintenance.ps1
+# Analyse a completed public project and open a fact-review PR
+.\local\Invoke-IdentityMaintenance.ps1 -Repository viral-town -Publish
+# Explicit reanalysis after correcting evidence/context
+.\local\Invoke-IdentityMaintenance.ps1 -Repository viral-town -Publish -Force
+# Run the configured task now
+Start-ScheduledTask -TaskName 'Roy Identity OS Weekly'
+# Remove schedule only; source/data remain
+Unregister-ScheduledTask -TaskName 'Roy Identity OS Weekly' -Confirm:$false
+```
+
+`local/config.json` and `local/local-state/` are ignored by Git. Config supports engine, CLI path, repository allowlist, batch size and timeout. State records successful published/skipped analysis fingerprints; dry runs do not suppress a later publish. An exclusive lock prevents overlapping runs. After a crash, check no task/CLI is running before removing `run.lock`. Logs and bounded source packs remain local. No provider token is printed or copied.
+
+The scheduled wrapper pulls the trusted checkout with `--ff-only` and pauses on tracked/unignored edits. Skills can be recopied by rerunning installation. The analysis model receives latest immutable public context, selected source files, workflow conclusions and quoted evidence; it does not execute project scripts. The publisher is deterministic and separate. `--sandbox read-only` is not a promise of OS-wide read isolation; private-source publishing is prohibited by intake design, public-repository checks, evidence validation and Roy’s review.
+
+## Claude Code
+
+Use your existing Claude subscription login (`claude auth login`) and set `engine` to `claude` in config. The adapter verifies OAuth subscription authentication, removes API-key/provider environment overrides, runs with no tools/MCP, structured JSON and no session persistence. It never falls back to paid API billing. Codex is the primary adapter; optional Claude execution requires a working local login and is not claimed tested merely by checking its help flags.
+
+## Shared instructions for Codex / Claude / Grok
+
+The maintained skill source is `skills/roy-identity/SKILL.md`. Installer copies it to `~/.agents/skills/roy-identity/` and `~/.claude/skills/roy-identity/`. It does not replace existing AGENTS.md/CLAUDE.md. Paste this block into global/project instructions or a Grok custom instruction:
+
+> Before writing Roy Wang’s resume, biography, application or introduction, resolve RoyWG925/builder-context main to an immutable commit and read AI_CONTEXT.md at that commit. Use generated/introductions.json for the audience. After finishing a meaningful project, compare its actual implementation/tests with the canonical record and propose an evidence-backed Identity OS update. Preserve source commit, exact quotes, attribution limits and change reason. Private evidence stays private; a public demo is not disclosure approval. Never merge fact PRs, even when logged in as RoyWG925. LinkedIn is draft-only. If GitHub writes are unavailable, return a proposed JSON change and questions for Roy.
+
+For external tools without GitHub access, open https://github.com/RoyWG925/builder-context/blob/main/AI_CONTEXT.md and paste the current context manually. This is a usable instruction, not an assertion that Grok was remotely configured.
+
+## Verified environment limitations (2026-10-19)
+
+This Work session found Codex 0.133.0 and Claude Code 2.1.303 installed. GitHub CLI authentication is invalid. A real Codex subscription smoke invocation reached initialization but failed because this session cannot write the user’s `.codex` state directory; normal local user execution is required. No task or global skill was installed and no authentication file was modified. Installer/script syntax, argument safety and deterministic analysis validation are tested separately; live model analysis remains a local acceptance step.

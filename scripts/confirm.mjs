@@ -1,6 +1,7 @@
 import {readFile} from 'node:fs/promises';
-import {OWNER,REPO,api,json,save,load,validate,validateProject,validateCompetition,ID} from './lib.mjs';
+import {OWNER,REPO,api,json,save,load,validate,validateProject,validateCompetition,ID,hash} from './lib.mjs';
 import {generate} from './generate.mjs';
+import {proposalKey} from './proposals.mjs';
 
 export function canConfirm(event) {
   const p=event?.pull_request;
@@ -8,19 +9,21 @@ export function canConfirm(event) {
 }
 export async function promote(root,event,paths) {
   if(!canConfirm(event)) throw Error('Only an owner-merged PR into the canonical main branch confirms facts.');
-  const files=paths.filter(f=>/^candidates\/[a-z0-9][a-z0-9-]{0,95}\.json$/.test(f));
+  const files=paths.filter(f=>/^candidates\/[a-z0-9][a-z0-9-]{0,159}\.json$/.test(f));
   const data=await load(root);
   const evidence=await json(`${root}/evidence/sources.json`);
   let count=0;
   for(const file of files) {
     const c=await json(`${root}/${file}`);
-    if(!['project','competition'].includes(c.kind) || !ID.test(c.record?.id) || file!==`candidates/${c.record.id}.json` || c.record.review.state!=='proposed') throw Error('Invalid proposal');
+    if(c.schemaVersion!==2||!['project','competition'].includes(c.kind) || !ID.test(c.record?.id) || file!==`candidates/${proposalKey(c)}.json` || c.record.review.state!=='proposed') throw Error('Legacy or invalid proposal: refresh with the current collector before merging.');
+    const priorRecord=(c.kind==='project'?data.projects:data.competitions).find(p=>p.id===c.record.id);
+    if((priorRecord?hash(priorRecord):null)!==c.baseRecordHash)throw Error(`Stale proposal for ${c.record.id}; canonical facts changed. Reanalyse before accepting.`);
     // Check every source is a public GitHub snapshot of this exact public repository.
     for(const source of c.sources) {
       const sourceUrl=new URL(source.url),repoUrl=new URL(c.kind==='project'?c.record.repository:data.projects.find(p=>p.id===c.record.projectId)?.repository);
       if(source.visibility!=='public'||sourceUrl.origin!=='https://github.com'||!sourceUrl.pathname.startsWith(repoUrl.pathname+'/tree/')||!sourceUrl.pathname.endsWith(c.discovery.commit))throw Error('Mismatched source');
       const prior=evidence.sources.find(e=>e.id===source.id);
-      if(prior&&JSON.stringify(prior)!==JSON.stringify(source))throw Error('Conflicting evidence id');
+      if(prior&&['url','visibility','kind','commit'].some(k=>prior[k]!==source[k]))throw Error('Conflicting evidence id');
       if(!prior)evidence.sources.push(source);
     }
     const record=structuredClone(c.record);
@@ -48,5 +51,9 @@ if(process.argv[1]?.endsWith('confirm.mjs')) {
     paths.push(...files.filter(f=>['added','modified'].includes(f.status)).map(f=>f.filename));
     if(files.length<100)break;
   }
-  console.log(`Owner-confirmed ${await promote('.',event,paths)} project records.`);
+  for(const file of paths.filter(p=>/^candidates\/[a-z0-9-]+\.json$/.test(p))){
+    const c=await json(file);const url=c.kind==='project'?c.record.repository:(await load()).projects.find(p=>p.id===c.record.projectId)?.repository;
+    const r=await api(`/repos${new URL(url).pathname}`);if(r.private||r.owner.login!==OWNER)throw Error('Source repository became private or changed owner; refusing publication');
+  }
+  console.log(`Owner-confirmed ${await promote('.',event,paths)} records.`);
 }

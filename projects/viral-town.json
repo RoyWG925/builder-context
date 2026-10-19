@@ -10,7 +10,7 @@
   "repository": "https://github.com/RoyWG925/viral-town",
   "demo": "https://viral-town.vercel.app",
   "results": ["Published a playable experience with validated model actions and an inspectable chain of causes."],
-  "limitations": ["Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.", "Submission, acceptance, awards, and Roy's precise team contribution are not confirmed."],
+  "limitations": ["Live runs depend on model latency. Entertainment claims have not been validated with human playtesters.", "Roy confirms completion and submission to AMD Developer Hackathon ACT III; results are pending. Roy's precise individual and team contribution remains unconfirmed."],
   "lessons": ["Separate model-generated decisions from deterministic state changes and make failures observable."],
   "evidence": ["viral-readme"],
   "lastVerified": "2026-10-19",

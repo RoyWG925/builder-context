@@ -1,12 +1,13 @@
-<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 61890423f0846e3fa41cdd735ca8c7611364d5fffaad33af64a52e4b2f8468ab -->
+<!-- Generated from RoyWG925/builder-context. Edit canonical JSON, not this file. Revision: 35101f336f642cfe1c349b0e192177e4e4abbe39fbbf00ac6b5f9897d9e9c36c -->
 ## Hi, I'm Roy Wang
 
-Product-minded engineer building AI-powered tools and interactive web apps.
+Building AI-native consumer products, agents and interactive experiences.
 
 ### What I build
-- Applied NLP
-- Full-Stack Apps
-- Interactive UI
+- AI-native Consumer Products
+- AI Agent Engineering
+- Creative Technology
+- Interactive Experiences
 
 ### Featured work
 - **[VIRAL - One whisper, a living town](https://github.com/RoyWG925/viral-town)** · [demo](https://viral-town.vercel.app): AI-driven town simulation: whisper a sentence to a resident and watch its consequences. Gemma on AMD generates character reactions; a deterministic engine validates actions and records causal events.
@@ -15,7 +16,7 @@ Product-minded engineer building AI-powered tools and interactive web apps.
 - **[NUCLEUS.IO](https://github.com/RoyWG925/nucleus-io)** · [demo](https://nucleus-io.vercel.app): Flyable 3D portfolio built with Three.js, custom GLSL post-processing, procedural audio, and interactive project orbs.
 
 ### Hackathons
-- AMD Developer Hackathon ACT III · Track 4 - Create a New Kind of Experience: VIRAL's public README identifies this hackathon and track. Official submission and competition results remain unconfirmed.
+- AMD Developer Hackathon ACT III · Track 4 - Create a New Kind of Experience: VIRAL is completed and submitted, according to Roy's explicit statement on 2026-10-19. Results are pending; no award is claimed. The official submission receipt has not been independently verified.
 
 ### Stack
 Python · PyTorch · Hugging Face Transformers · BERT fine-tuning · pandas · Jupyter · React · Astro · Node.js · Firebase · Supabase · Vercel · Three.js / WebGL · GLSL shaders · Framer Motion · CSS animation · Git / GitHub · Cursor · Claude Code · GitHub Copilot · Godot · Figma · Docker

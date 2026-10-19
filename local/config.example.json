@@ -1,0 +1,9 @@
+{
+  "engine":"codex",
+  "stateDirectory":"./local-state",
+  "maxRepositories":6,
+  "timeoutMinutes":30,
+  "codexEntry":null,
+  "claudeCommand":"claude",
+  "repositories":[]
+}

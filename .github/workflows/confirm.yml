@@ -11,7 +11,7 @@ concurrency:
 jobs:
   confirm:
     if: github.event.pull_request.merged == true && github.event.pull_request.merged_by.login == 'RoyWG925' && github.event.sender.login == 'RoyWG925'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       # Only reviewed, owner-merged default-branch code is ever executed with write permission.
       # Do not change this to check out an unmerged pull_request.head SHA.
@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name 'roy-identity-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add projects evidence candidates receipts generated AI_CONTEXT.md
+          git add projects competitions evidence candidates receipts generated AI_CONTEXT.md
           if ! git diff --cached --quiet; then
             git commit -m 'Publish facts confirmed by Roy in reviewed PR'
             git push origin HEAD:main
