@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,readFile,writeFile,access} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
+import {realpathSync} from 'node:fs';
 import {join} from 'node:path';
 import {selectEvidenceFiles,collect,normalize} from '../scripts/evidence.mjs';
 import {agentEnvironment,codexExecution,run,maintain,validateAnalysis} from '../scripts/local-agent.mjs';
@@ -60,4 +61,10 @@ test('local assessments cannot substitute another repository or omit supplied co
   assert.throws(()=>validateAnalysis(answer,packs),/Missing repository assessment/);
   answer.assessments=[{repository:'other/private',attribution:'unknown',existingFacts:[],newFindings:[],technicalDecisions:[],testEvidence:[],limitations:[]}];
   assert.throws(()=>validateAnalysis(answer,packs),/Invalid repository assessment/);
+});
+
+test('Windows scheduler path helper exposes the physical path for a real directory with spaces',async()=>{
+  const dir=await mkdtemp(join(tmpdir(),'identity native directory '));
+  const physical=(await run(process.execPath,['scripts/native-path.mjs',dir])).trim();
+  assert.equal(physical,realpathSync.native(dir));
 });

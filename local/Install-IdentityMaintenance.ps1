@@ -1,6 +1,11 @@
 [CmdletBinding()]
 param([string]$InstallDirectory=(Join-Path $env:LOCALAPPDATA 'RoyIdentityOS'),[ValidateSet('codex','claude')][string]$Engine='codex',[switch]$RegisterWeeklyTask,[switch]$InstallAgentSkill)
 $ErrorActionPreference='Stop'
+function Resolve-IdentityNativePath([string]$Path) {
+  $identityNative=& node (Join-Path $PSScriptRoot '../scripts/native-path.mjs') $Path
+  if ($LASTEXITCODE -ne 0) { throw "Cannot resolve the Windows-visible path: $Path" }
+  return ($identityNative -join '').Trim()
+}
 foreach ($tool in @('node','git','gh')) { if (!(Get-Command $tool -ErrorAction SilentlyContinue)) { throw "Install $tool first; see docs/LOCAL_AGENTS.md." } }
 & gh auth status -h github.com
 if ($LASTEXITCODE -ne 0) { throw 'Run gh auth login -h github.com, then run this installer again.' }
@@ -10,6 +15,7 @@ $identityInstall=[IO.Path]::GetFullPath($InstallDirectory)
 New-Item -ItemType Directory -Path $identityInstall -Force | Out-Null
 $identityCheckout=Join-Path $identityInstall 'builder-context'
 if (!(Test-Path -LiteralPath $identityCheckout)) { & git clone https://github.com/RoyWG925/builder-context.git $identityCheckout; if ($LASTEXITCODE -ne 0) { throw 'Clone failed' } }
+$identityCheckout=Resolve-IdentityNativePath $identityCheckout
 $identityRemote=(& git -C $identityCheckout remote get-url origin).Trim()
 if ($identityRemote -notmatch 'github\.com[:/]RoyWG925/builder-context(?:\.git)?$') { throw 'Unexpected checkout remote; refusing to use it.' }
 if (@(& git -C $identityCheckout status --porcelain).Count -gt 0) { throw 'Checkout has local changes; preserving them. Resolve them before reinstalling.' }
@@ -23,6 +29,14 @@ if (!(Test-Path -LiteralPath $identityConfig)) {
   if ($Engine -eq 'codex') { $identitySettings.codexEntry=Join-Path $env:APPDATA 'npm/node_modules/@openai/codex/bin/codex.js'; if (!(Test-Path -LiteralPath $identitySettings.codexEntry)) { throw 'Install Codex CLI with npm install -g @openai/codex, then run codex login using ChatGPT.' } }
   $identitySettings | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $identityConfig -Encoding utf8
 }
+$identityInstalledSettings=Get-Content -LiteralPath $identityConfig -Raw | ConvertFrom-Json
+if ($identityInstalledSettings.engine -eq 'codex' -and $identityInstalledSettings.codexEntry) {
+  $identityNativeEntry=Resolve-IdentityNativePath $identityInstalledSettings.codexEntry
+  if ($identityNativeEntry -ne $identityInstalledSettings.codexEntry) {
+    $identityInstalledSettings.codexEntry=$identityNativeEntry
+    $identityInstalledSettings | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $identityConfig -Encoding utf8
+  }
+}
 if ($InstallAgentSkill) {
   foreach ($identitySkillRoot in @((Join-Path $env:USERPROFILE '.agents/skills'),(Join-Path $env:USERPROFILE '.claude/skills'))) {
     $identitySkillTarget=Join-Path $identitySkillRoot 'roy-identity'
@@ -34,8 +48,8 @@ if ($RegisterWeeklyTask) {
   if ((Get-TimeZone).Id -ne 'Taipei Standard Time') { throw 'Weekly task expects Taipei Standard Time. Configure your intended timezone or create a trigger manually.' }
   $identityPowerShell=(Get-Command powershell.exe).Source
   $identityRunner=Join-Path $identityCheckout 'local/Run-ScheduledMaintenance.ps1'
-  # The scheduler can reject a profile checkout as its initial directory (0x8007010B).
-  # The runner resolves every project/config path explicitly; start in Windows instead.
+  # Use physical paths outside the app's MSIX filesystem view. The runner resolves
+  # every project/config path explicitly and starts in the stable Windows directory.
   $identityAction=New-ScheduledTaskAction -Execute $identityPowerShell -Argument ('-NoProfile -NonInteractive -WindowStyle Hidden -File "'+$identityRunner+'" -Config "'+$identityConfig+'"') -WorkingDirectory $env:SystemRoot
   $identityTrigger=New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At '09:30'
   $identityPrincipal=New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
