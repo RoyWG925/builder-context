@@ -6,7 +6,7 @@
     "visibility": "public",
     "name": "T-MINUS",
     "summary": "Single-page event countdown experience with animated cards, category filters and browser-local voting/follow interactions.",
-    "contribution": "README credits Roy Wang and describes a solo project; Roy should confirm authorship and any reused assets or agent contribution.",
+    "contribution": "Roy independently built T-MINUS, as explicitly confirmed by Roy on 2026-10-19.",
     "technologies": [
       "HTML",
       "CSS",
@@ -24,7 +24,7 @@
     "limitations": [
       "Archived repository; current hosted availability was not independently tested.",
       "Browser-local vote state does not demonstrate real shared community votes, users or retention.",
-      "Roy’s specific contribution and project maturity await owner review."
+      "Project dates, reused assets and current project maturity still require confirmation."
     ],
     "lessons": [],
     "evidence": [
@@ -72,7 +72,14 @@
       }
     ],
     "checks": [],
-    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending."
+    "notes": "Source inspected by Codex Work; project code/tests were not executed in this review. Personal/team attribution remains pending.",
+    "ownerAttestation": {
+      "by": "RoyWG925",
+      "date": "2026-10-19",
+      "source": "Explicit owner clarification in Identity OS conversation",
+      "statement": "ballcrawl t-minus都是我自己做的",
+      "scope": "Roy confirms solo project authorship; dates and external-asset details remain unspecified."
+    }
   },
   "baseCanonicalCommit": "01747c61348e3bcced4530737be0b3cf8c57ee08"
 }
