@@ -34,7 +34,9 @@ if ($RegisterWeeklyTask) {
   if ((Get-TimeZone).Id -ne 'Taipei Standard Time') { throw 'Weekly task expects Taipei Standard Time. Configure your intended timezone or create a trigger manually.' }
   $identityPowerShell=(Get-Command powershell.exe).Source
   $identityRunner=Join-Path $identityCheckout 'local/Run-ScheduledMaintenance.ps1'
-  $identityAction=New-ScheduledTaskAction -Execute $identityPowerShell -Argument ('-NoProfile -NonInteractive -WindowStyle Hidden -File "'+$identityRunner+'" -Config "'+$identityConfig+'"') -WorkingDirectory $identityCheckout
+  # The scheduler can reject a profile checkout as its initial directory (0x8007010B).
+  # The runner resolves every project/config path explicitly; start in Windows instead.
+  $identityAction=New-ScheduledTaskAction -Execute $identityPowerShell -Argument ('-NoProfile -NonInteractive -WindowStyle Hidden -File "'+$identityRunner+'" -Config "'+$identityConfig+'"') -WorkingDirectory $env:SystemRoot
   $identityTrigger=New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At '09:30'
   $identityPrincipal=New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
   $identityTaskSettings=New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Hours 1)
