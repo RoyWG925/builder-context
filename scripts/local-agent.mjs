@@ -18,7 +18,7 @@ export function run(command,args,{input='',cwd=root,env=process.env,timeout=6000
   child.on('error',e=>{failure??=e;});child.on('close',async code=>{clearTimeout(timer);await Promise.all([out,err].filter(Boolean).map(s=>new Promise(r=>s.end(r))));failure?reject(failure):code===0?resolve(stdout):reject(Error(`${command} exited ${code}: ${stderr.slice(-3000)}`));});child.stdin.on('error',()=>{});child.stdin.end(input);
 });}
 // The model subprocess never receives GitHub or model API credentials through its environment.
-export function agentEnvironment(source=process.env){return Object.fromEntries(Object.entries(source).filter(([k])=>!/^(GH_TOKEN|GITHUB_TOKEN|CODEX_API_KEY|CODEX_ACCESS_TOKEN|CODEX_THREAD_ID|CODEX_INTERNAL_.*|OPENAI_API_KEY|OPENAI_BASE_URL|OPENAI_FEDERATION_RULE_ID|OPENAI_IDENTITY_TOKEN_FILE|OPENAI_WORKLOAD_IDENTITY_CONTEXT|ANTHROPIC_API_KEY|ANTHROPIC_AUTH_TOKEN|ANTHROPIC_BASE_URL|CLAUDE_CODE_USE_BEDROCK|CLAUDE_CODE_USE_VERTEX|CLAUDE_CODE_USE_FOUNDRY|IDENTITY_AI_.*)$/i.test(k)));}
+export function agentEnvironment(source=process.env){return Object.fromEntries(Object.entries(source).filter(([k])=>!/(^|_)(API_KEY|API_TOKEN|ACCESS_TOKEN|AUTH_TOKEN|SECRET|TOKEN|PASSWORD|CREDENTIALS)$/i.test(k)&&!/^(AWS_.*|CODEX_THREAD_ID|CODEX_INTERNAL_.*|NODE_OPTIONS|OPENAI_BASE_URL|OPENAI_FEDERATION_RULE_ID|OPENAI_IDENTITY_TOKEN_FILE|OPENAI_WORKLOAD_IDENTITY_CONTEXT|ANTHROPIC_BASE_URL|CLAUDE_CODE_USE_BEDROCK|CLAUDE_CODE_USE_VERTEX|CLAUDE_CODE_USE_FOUNDRY|IDENTITY_AI_.*)$/i.test(k)));}
 export function codexExecution(events){
   const rows=events.trim().split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line));
   const completed=rows.findLast(row=>row.type==='turn.completed');

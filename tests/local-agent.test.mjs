@@ -24,7 +24,7 @@ test('collector pins source reads and reports bounded public coverage without ru
 });
 
 test('subscription subprocess strips paid-key overrides and nested app session identifiers',()=>{
-  assert.deepEqual(agentEnvironment({PATH:'bin',CODEX_HOME:'auth-location',CODEX_API_KEY:'secret',CODEX_ACCESS_TOKEN:'secret',CODEX_THREAD_ID:'parent',CODEX_INTERNAL_ORIGINATOR_OVERRIDE:'desktop',OPENAI_FEDERATION_RULE_ID:'rule',OPENAI_IDENTITY_TOKEN_FILE:'secret-path',GH_TOKEN:'secret',GITHUB_TOKEN:'secret',OPENAI_API_KEY:'secret',ANTHROPIC_API_KEY:'secret'}),{PATH:'bin',CODEX_HOME:'auth-location'});
+  assert.deepEqual(agentEnvironment({PATH:'bin',CODEX_HOME:'auth-location',CODEX_API_KEY:'secret',CODEX_ACCESS_TOKEN:'secret',CODEX_THREAD_ID:'parent',CODEX_INTERNAL_ORIGINATOR_OVERRIDE:'desktop',OPENAI_FEDERATION_RULE_ID:'rule',OPENAI_IDENTITY_TOKEN_FILE:'secret-path',GH_TOKEN:'secret',GITHUB_TOKEN:'secret',OPENAI_API_KEY:'secret',ANTHROPIC_API_KEY:'secret',TOKENFACTORY_API_KEY:'secret',AMD_TOKENFACTORY_API_KEY:'secret',GEMINI_API_KEY:'secret',GOOGLE_APPLICATION_CREDENTIALS:'secret-file',AWS_ACCESS_KEY_ID:'secret',AWS_SECRET_ACCESS_KEY:'secret',NODE_OPTIONS:'--import=unexpected-hook'}),{PATH:'bin',CODEX_HOME:'auth-location'});
 });
 
 test('acceptance requires a completed model turn and rejects tool actions and failed turns',()=>{
