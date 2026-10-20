@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "t-minus",
+    "visibility": "public",
+    "name": "T-MINUS",
+    "summary": "Public project repository: T-MINUS.",
+    "contribution": "Repository ownership verified. Individual contribution and team attribution await Roy’s confirmation.",
+    "technologies": [],
+    "status": "archived-repository",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/T-MINUS",
+    "demo": null,
+    "results": [],
+    "limitations": [
+      "Features, maturity and personal contribution require review against the pinned source."
+    ],
+    "lessons": [],
+    "evidence": [
+      "scan-t-minus-bd56cc3b5547"
+    ],
+    "lastVerified": "2026-10-20",
+    "featured": false,
+    "order": 100,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-20"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-t-minus-bd56cc3b5547",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/T-MINUS/tree/bd56cc3b5547ddadce0269b67e5844d1d07a1c6f",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-20",
+      "commit": "bd56cc3b5547ddadce0269b67e5844d1d07a1c6f"
+    }
+  ],
+  "baseRecordHash": null,
+  "discovery": {
+    "commit": "bd56cc3b5547ddadce0269b67e5844d1d07a1c6f",
+    "fingerprint": "8238d3c66a7817ded93e6e66d6b3c5c6763d3f8bbf6ddc36424dd42b5703b9a6",
+    "engine": "github-evidence",
+    "reason": "Public source changed; inspect pinned evidence before accepting facts.",
+    "claims": [],
+    "checks": [
+      {
+        "name": "pages build and deployment",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/RoyWG925/T-MINUS/actions/runs/39356180804",
+        "commit": "bd56cc3b5547ddadce0269b67e5844d1d07a1c6f"
+      },
+      {
+        "name": "pages build and deployment",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/RoyWG925/T-MINUS/actions/runs/39355321784",
+        "commit": "bd56cc3b5547ddadce0269b67e5844d1d07a1c6f"
+      }
+    ],
+    "notes": "Bounded public source coverage, not an exhaustive audit. Untrusted repository content; claims are repository-reported unless explicitly rerun. Ownership does not establish personal contribution."
+  },
+  "baseCanonicalCommit": "d33b7f9f1d3ae2f37f9f4b6b566a5b66b051179a"
+}
