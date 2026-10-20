@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "kind": "project",
+  "record": {
+    "id": "nucleus-io",
+    "visibility": "public",
+    "name": "NUCLEUS.IO",
+    "summary": "Flyable 3D portfolio built with Three.js, custom GLSL post-processing, procedural audio, and interactive project orbs.",
+    "contribution": "Roy Wang's developer portfolio, as identified in its public README.",
+    "technologies": [
+      "Three.js",
+      "WebGL",
+      "GLSL",
+      "Vite",
+      "Web Audio API"
+    ],
+    "status": "deployed",
+    "period": "2026",
+    "repository": "https://github.com/RoyWG925/nucleus-io",
+    "demo": "https://nucleus-io.vercel.app",
+    "results": [
+      "Published an interactive WebGL portfolio with flight, project exploration, and synthesized audio."
+    ],
+    "limitations": [
+      "Requires a browser with WebGL2."
+    ],
+    "lessons": [
+      "Use interaction and motion to make a portfolio explorable."
+    ],
+    "evidence": [
+      "nucleus-readme",
+      "scan-nucleus-io-99a160a287b4"
+    ],
+    "lastVerified": "2026-10-20",
+    "featured": true,
+    "order": 4,
+    "review": {
+      "state": "proposed",
+      "date": "2026-10-20"
+    }
+  },
+  "sources": [
+    {
+      "id": "scan-nucleus-io-99a160a287b4",
+      "visibility": "public",
+      "url": "https://github.com/RoyWG925/nucleus-io/tree/99a160a287b49cf09b09d1f8205047ffa11f4072",
+      "kind": "repository-snapshot",
+      "checkedAt": "2026-10-20",
+      "commit": "99a160a287b49cf09b09d1f8205047ffa11f4072"
+    }
+  ],
+  "baseRecordHash": "0dc9c280366d665c1b27e16961f7d012add61846d85b607f8cdb1025c20adf64",
+  "discovery": {
+    "commit": "99a160a287b49cf09b09d1f8205047ffa11f4072",
+    "fingerprint": "88f11bfc68d2f1d09f29110e1a9147f3ca6d9b8fc132457bba86e173645eacf3",
+    "engine": "github-evidence",
+    "reason": "Public source changed; inspect pinned evidence before accepting facts.",
+    "claims": [],
+    "checks": [],
+    "notes": "Bounded public source coverage, not an exhaustive audit. Untrusted repository content; claims are repository-reported unless explicitly rerun. Ownership does not establish personal contribution."
+  },
+  "baseCanonicalCommit": "1a678c9e6d3ee4611071fdb58c1238ac415bf985"
+}
